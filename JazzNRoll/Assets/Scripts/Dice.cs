@@ -29,7 +29,6 @@ public class Dice : MonoBehaviour
         int framesStill = 0;
         while (framesStill < 10)
         {
-
             if (rb.linearVelocity == Vector3.zero || rb.angularVelocity == Vector3.zero)
                 framesStill++; 
             else

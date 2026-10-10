@@ -1,17 +1,17 @@
-using TMPro;
+﻿using TMPro;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
-public class PointsManager : MonoBehaviour
+public class PointsManager 
 {
-    [SerializeField] private TextMeshProUGUI _pointsUI;
-    private static TextMeshProUGUI pointsUI;
     private static int currentPoints = 0;
     private static int[] pointsFromDice = new int[6+1];
     private static int countRolls = 0;
-
-    private void Start()
+   
+    public static void AddToPoints(int value)
     {
-        pointsUI = _pointsUI;
+        currentPoints += value;
+        UIManager.PrintPoints(currentPoints.ToString());
     }
     public static void ClearPoints()
     {
@@ -23,14 +23,8 @@ public class PointsManager : MonoBehaviour
     {
         pointsFromDice[point]++;
         countRolls++;
-        if (countRolls == DiceManager.currentNumberOfRolls)
-            UpdatePoints();
-
-    }
-    private static void UpdatePoints()
-    {
-        currentPoints += CountResult();
-        pointsUI.text = currentPoints.ToString();
+        if (countRolls == DiceManager.countDice)
+            AddToPoints(CountResult());
 
     }
     private static int CountResult()
