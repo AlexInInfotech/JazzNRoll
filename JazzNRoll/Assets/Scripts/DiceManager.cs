@@ -6,9 +6,9 @@ public class DiceManager : MonoBehaviour
     [SerializeField] private float maxForce = 20f;
     [SerializeField] private float minTorqueFroce = 10f;
     [SerializeField] private float maxTorqueFroce = 20f;
-    public static int countDice = 6;
+    public static int countDice;
     private static int availableRolls = 0;
-    int countRolls = countDice;
+    int countStaticDice;
 
     private Dice[] dice;
     private Vector3[] startPositions;
@@ -20,16 +20,25 @@ public class DiceManager : MonoBehaviour
     }
     public void DiceRoll()
     {
-        if (availableRolls == 0 || countRolls < countDice)
+        if (countStaticDice < countDice)
             return;
-        countRolls = 0;
+        countStaticDice = 0;
         ChangeAvailableRolls(availableRolls - 1);
         PointsManager.ClearPoints();
         for (int i = 0; i < dice.Length; i++)
         {
             dice[i].gameObject.transform.position = startPositions[i];
-            StartCoroutine(dice[i].DieRoll(points => { PointsManager.SetPoint(points); countRolls++; }));
+            StartCoroutine(dice[i].DieRoll(points => { PointsManager.SetPoint(points); countStaticDice++; FinishRoll(); }));
         }
+    }
+    private void FinishRoll()
+    {
+        if (availableRolls != 0 || countStaticDice != countDice)
+            return;
+        BaffManager.SpawnNewBaffs();
+        UIManager.FinishRound();
+        CameraAnimationController.FinishRoll();
+
     }
     private void PutInStartPosition(GameObject die,  Vector3 startPosition)
     {
@@ -37,6 +46,8 @@ public class DiceManager : MonoBehaviour
     }
     private void Start()
     {
+        countDice = transform.childCount;
+        countStaticDice = countDice;
         dice = new Dice[transform.childCount];
         startPositions = new Vector3[transform.childCount];
         Dice.SetMinMax(minForce, maxForce, minTorqueFroce, maxTorqueFroce);
