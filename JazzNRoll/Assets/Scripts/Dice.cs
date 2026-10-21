@@ -6,7 +6,7 @@ public class Dice : MonoBehaviour
 {
     private Rigidbody rb => GetComponent<Rigidbody>();
     private Vector3 baseVector = Vector3.forward;
-    const float fault = 0.1f;
+    const float fault = 0.3f;
 
     private static float _minForce = 10f;
     private static float _maxForce = 20f;

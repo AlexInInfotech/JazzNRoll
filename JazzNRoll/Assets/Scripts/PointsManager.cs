@@ -39,7 +39,8 @@ public static class PointsManager
         pointsFromDice[point]++;
         countRolls++;
         if (countRolls == DiceManager.countDice)
-            AddToPoints(CountResult());
+            ResultsVisualiisation.ShowAdditivePoints(CountResult());
+            //AddToPoints(CountResult());
 
     }
     

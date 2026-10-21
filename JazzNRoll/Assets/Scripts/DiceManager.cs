@@ -28,8 +28,16 @@ public class DiceManager : MonoBehaviour
         for (int i = 0; i < dice.Length; i++)
         {
             dice[i].gameObject.transform.position = startPositions[i];
-            StartCoroutine(dice[i].DieRoll(points => { PointsManager.SetPoint(points); countStaticDice++; FinishRoll(); }));
+            StartCoroutine(dice[i].DieRoll(points => ValueAppeared(points)));
         }
+    }
+
+    private void ValueAppeared(int points)
+    {
+        PointsManager.SetPoint(points);
+        ResultsVisualiisation.ShowApeardPoint(points);
+        countStaticDice++; 
+        FinishRoll();
     }
     private void FinishRoll()
     {

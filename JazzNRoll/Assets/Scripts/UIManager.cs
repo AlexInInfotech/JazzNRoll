@@ -9,31 +9,42 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _rollButton;
     [SerializeField] private GameObject _betList;
     [SerializeField] private GameObject _baffList;
+    [SerializeField] private GameObject _resultsRender;
 
     private static TextMeshProUGUI countRollsUI;
     private static TextMeshProUGUI pointsUI;
     private static GameObject rollButton;
     private static GameObject betList;
     private static GameObject baffList;
+    private static GameObject resultsRender;
     private const string pointsText = "Очки: ";
     private const string rollsText = "Броски: ";
     public static void BetMade()
     {
+        rollButton.SetActive(true);
+        resultsRender.SetActive(true);
+
+
         betList.SetActive(false);
         baffList.SetActive(false);
-        rollButton.SetActive(true);
     }
     public static void FinishRound()
     {
         baffList.SetActive(true);
+
+
         betList.SetActive(false);
         rollButton.SetActive(false);
+        resultsRender.SetActive(false);
     }
     public static void BaffPicked()
     {
-        baffList.SetActive(false);
         betList.SetActive(true);
+
+
+        baffList.SetActive(false);
         rollButton.SetActive(false);
+        resultsRender.SetActive(false);
     }
     private void Start()
     {
@@ -42,6 +53,8 @@ public class UIManager : MonoBehaviour
         rollButton = _rollButton;
         betList = _betList;
         baffList = _baffList;
+        resultsRender= _resultsRender;
+        resultsRender.SetActive(false);
         betList.SetActive(true);
         rollButton.SetActive(false);
         baffList.SetActive(false);
