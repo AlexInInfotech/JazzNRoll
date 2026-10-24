@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NewBaffItem
   m_EditorClassIdentifier: Assembly-CSharp::BaffItem
   baff: {fileID: 11400000, guid: b5d6f6db1237f2846a1ae97979d3cf63, type: 2}
-  icon: {fileID: 21300000, guid: 39bfa59ecc64ced41a8e964dc1222648, type: 3}
-  cardSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  title: 
-  description: cv
+  icon: {fileID: 21300000, guid: 31fad0cbedc09164e92a102eb118b82b, type: 3}
+  cardSprite: {fileID: 21300000, guid: 28cee522ec52c3f4c92407bc4be6a0aa, type: 3}
+  title: Poker
+  description: Doing nothing

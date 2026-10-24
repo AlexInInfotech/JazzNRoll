@@ -79,6 +79,9 @@ public static class PointsManager
                     combo = ComboType.FullHouse;
                 else
                     combo = ComboType.Pair;
+
+            if (hasSet && combo == ComboType.NoCombo)
+                combo = ComboType.Set;
             if (pointsFromDice[i] != 0)
             {
                 streetCount++;
@@ -88,6 +91,7 @@ public static class PointsManager
                      combo = ComboType.Royal;
             }
         }
+        Debug.Log(combo);
         return (int)(result* ComboModifiers.GetValueOrDefault<ComboType, float>(combo));
 
     }
