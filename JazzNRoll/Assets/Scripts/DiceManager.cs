@@ -4,61 +4,58 @@ public class DiceManager : MonoBehaviour
 {
     [SerializeField] private float minForce = 10f;
     [SerializeField] private float maxForce = 20f;
-    [SerializeField] private float minTorqueFroce = 10f;
-    [SerializeField] private float maxTorqueFroce = 20f;
-    public static int countDice;
-    private static int availableRolls = 0;
-    int countStaticDice;
+    [SerializeField] private float minTorqueForce = 10f;
+    [SerializeField] private float maxTorqueForce = 20f;
+    public static int diceCount;
+    private static int _remainingRolls = 0;
+    int _stoppedDiceCount;
 
     private Dice[] dice;
     private Vector3[] startPositions;
 
     public static void ChangeAvailableRolls(int value)
     {
-        availableRolls = value;
-        UIManager.PrintRolls(value.ToString());
+        _remainingRolls = value;
+        UIManager.PrintRemainingRolls(value.ToString());
     }
     public void DiceRoll()
     {
-        if (countStaticDice < countDice)
+        if (_stoppedDiceCount < diceCount)
             return;
-        countStaticDice = 0;
-        ChangeAvailableRolls(availableRolls - 1);
+        _stoppedDiceCount = 0;
+        ChangeAvailableRolls(_remainingRolls - 1);
         PointsManager.ClearPoints();
+        ResultsVisualization.ClearResults();
         for (int i = 0; i < dice.Length; i++)
         {
             dice[i].gameObject.transform.position = startPositions[i];
-            StartCoroutine(dice[i].DieRoll(points => ValueAppeared(points)));
+            StartCoroutine(dice[i].DieRoll(diceValue => ValueAppeared(diceValue)));
         }
     }
 
-    private void ValueAppeared(int points)
+    private void ValueAppeared(int value)
     {
-        PointsManager.SetPoint(points);
-        ResultsVisualiisation.ShowApeardPoint(points);
-        countStaticDice++; 
-        FinishRoll();
+        PointsManager.RegisterDiceRoll(value);
+        ResultsVisualization.ShowAppearedDiceValue(value);
+        _stoppedDiceCount++;
+        TryFinishTurn();
     }
-    private void FinishRoll()
+    private void TryFinishTurn()
     {
-        if (availableRolls != 0 || countStaticDice != countDice)
+        if (_remainingRolls != 0 || _stoppedDiceCount != diceCount)
             return;
         BaffManager.SpawnNewBaffs();
         UIManager.FinishRound();
-        CameraAnimationController.FinishRoll();
+        CameraAnimationController.FinishRound();
 
-    }
-    private void PutInStartPosition(GameObject die,  Vector3 startPosition)
-    {
-        die.transform.position = startPosition;
     }
     private void Start()
     {
-        countDice = transform.childCount;
-        countStaticDice = countDice;
+        diceCount = transform.childCount;
+        _stoppedDiceCount = diceCount;
         dice = new Dice[transform.childCount];
         startPositions = new Vector3[transform.childCount];
-        Dice.SetMinMax(minForce, maxForce, minTorqueFroce, maxTorqueFroce);
+        Dice.SetMinMax(minForce, maxForce, minTorqueForce, maxTorqueForce);
         for (int i = 0; i < transform.childCount; i++)
         {
             dice[i] = transform.GetChild(i).GetComponent<Dice>();

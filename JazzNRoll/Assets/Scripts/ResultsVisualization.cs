@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using TMPro;
 using NUnit.Framework.Constraints;
-public class ResultsVisualiisation : MonoBehaviour
+public class ResultsVisualization : MonoBehaviour
 {
     private static GameObject[] diceIcons;
     [SerializeField] private Transform iconsContainer;
@@ -12,7 +12,7 @@ public class ResultsVisualiisation : MonoBehaviour
     private static MonoBehaviour staticScript;
     private static Sprite[] pointsSprites;
     private static TextMeshProUGUI pointsUI;
-    private static int countRolls = 0;
+    private static int _rolledDiceCount = 0;
     void Start()
     {
         staticScript = this;
@@ -22,7 +22,7 @@ public class ResultsVisualiisation : MonoBehaviour
         for (int i = 0; i < iconsContainer.childCount; i++)
             diceIcons[i] = iconsContainer.GetChild(i).gameObject;
     }
-    public static void ShowAdditivePoints(int result)
+    public static void ShowGainedPoints(int result)
     {
         staticScript.StartCoroutine(ShowResults(result));
     }
@@ -35,12 +35,12 @@ public class ResultsVisualiisation : MonoBehaviour
         PointsManager.AddToPoints(result);
     }
 
-    public static void ShowApeardPoint(int point)
+    public static void ShowAppearedDiceValue(int value)
     {
-        diceIcons[countRolls].GetComponent<Image>().sprite = pointsSprites[point];
-        countRolls++;
-        if (countRolls == DiceManager.countDice)
-            countRolls = 0;
+        diceIcons[_rolledDiceCount].GetComponent<Image>().sprite = pointsSprites[value];
+        _rolledDiceCount++;
+        if (_rolledDiceCount == DiceManager.diceCount)
+            _rolledDiceCount = 0;
         //    for (int i = 0; i < diceIcons.Length; i++)
         //        diceIcons[i].GetComponent<Image>().sprite = pointsSprites[0];
 

@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 8856725913563469136}
   - component: {fileID: 2147004466871335399}
   - component: {fileID: 1509412159788730184}
+  - component: {fileID: 2250107633330960926}
   m_Layer: 5
   m_Name: Baff
   m_TagString: Untagged
@@ -263,16 +264,29 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BaffManager, Assembly-CSharp
-        m_MethodName: ActivateBaff
-        m_Mode: 3
+        m_MethodName: PickBaff
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2250107633330960926}
+          m_ObjectArgumentAssemblyTypeName: BaffCard, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2250107633330960926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7390859629390585034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d87ba5cf83652464b856b380fff7eb8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaffCard
+  baffItem: {fileID: 0}
 --- !u!1 &8123097717691272277
 GameObject:
   m_ObjectHideFlags: 0

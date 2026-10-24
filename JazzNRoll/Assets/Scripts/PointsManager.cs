@@ -20,8 +20,8 @@ public static class PointsManager
 
 
     private static int currentPoints = 0;
-    private static int[] pointsFromDice = new int[6+1];
-    private static int countRolls = 0;
+    private static int[] diceFaceCounts = new int[6+1];
+    private static int rolledDiceCount = 0;
    
     public static void AddToPoints(int value)
     {
@@ -30,16 +30,16 @@ public static class PointsManager
     }
     public static void ClearPoints()
     {
-        countRolls = 0;
-        for (int i = 0; i < pointsFromDice.Length; i++) 
-            pointsFromDice[i] = 0;
+        rolledDiceCount = 0;
+        for (int i = 0; i < diceFaceCounts.Length; i++) 
+            diceFaceCounts[i] = 0;
     }
-    public static void SetPoint(int point)
+    public static void RegisterDiceRoll(int value)
     {
-        pointsFromDice[point]++;
-        countRolls++;
-        if (countRolls == DiceManager.countDice)
-            ResultsVisualiisation.ShowAdditivePoints(CountResult());
+        diceFaceCounts[value]++;
+        rolledDiceCount++;
+        if (rolledDiceCount == DiceManager.diceCount)
+            ResultsVisualization.ShowGainedPoints(CountResult());
             //AddToPoints(CountResult());
 
     }
@@ -48,20 +48,20 @@ public static class PointsManager
     {
         int result = 0;
         ComboType combo = ComboType.NoCombo;
-        byte paraCounter = 0;
+        byte pairCount = 0;
         bool hasSet = false;
         byte streetCount = 0;
-        for (int i = 0; i < pointsFromDice.Length; i++)
+        for (int i = 0; i < diceFaceCounts.Length; i++)
         {
-            result += i * pointsFromDice[i];
-            switch (pointsFromDice[i])
+            result += i * diceFaceCounts[i];
+            switch (diceFaceCounts[i])
             {
                 case 0:
                     streetCount = 0;
                     break;
                 case 2:
-                    paraCounter++;
-                    if (paraCounter == 2)
+                    pairCount++;
+                    if (pairCount == 2)
                         combo = ComboType.TwoPairs;
                     break;
                 case 3:
@@ -74,7 +74,7 @@ public static class PointsManager
                     combo = ComboType.Flush;
                     break;
             }
-            if (paraCounter == 1 && combo == ComboType.NoCombo)
+            if (pairCount == 1 && combo == ComboType.NoCombo)
                 if (hasSet)
                     combo = ComboType.FullHouse;
                 else
@@ -82,7 +82,7 @@ public static class PointsManager
 
             if (hasSet && combo == ComboType.NoCombo)
                 combo = ComboType.Set;
-            if (pointsFromDice[i] != 0)
+            if (diceFaceCounts[i] != 0)
             {
                 streetCount++;
                 if (streetCount == 3)

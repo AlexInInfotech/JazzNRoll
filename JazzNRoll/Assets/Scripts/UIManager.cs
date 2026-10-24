@@ -63,7 +63,7 @@ public class UIManager : MonoBehaviour
     {
         pointsUI.text = pointsText + value;
     }
-    public static void PrintRolls(string value)
+    public static void PrintRemainingRolls(string value)
     {
         countRollsUI.text = rollsText + value;
     }

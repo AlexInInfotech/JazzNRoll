@@ -1583,6 +1583,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4384251748585294869, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
   m_PrefabInstance: {fileID: 1705651836}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &741677452 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2250107633330960926, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
+  m_PrefabInstance: {fileID: 1705651836}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d87ba5cf83652464b856b380fff7eb8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaffCard
 --- !u!1001 &756413465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1983,16 +1994,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 1807740520}
     m_Modifications:
     - target: {fileID: 1509412159788730184, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509412159788730184, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509412159788730184, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1807740521}
     - target: {fileID: 1509412159788730184, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ActivateBaff
+      value: PickBaff
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509412159788730184, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BaffManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1509412159788730184, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509412159788730184, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1446029633}
+    - target: {fileID: 1509412159788730184, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: BaffCard, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4384251748585294869, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
       propertyPath: m_Pivot.x
@@ -7979,6 +8010,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4384251748585294869, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
   m_PrefabInstance: {fileID: 1054744339}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1446029633 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2250107633330960926, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
+  m_PrefabInstance: {fileID: 1054744339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d87ba5cf83652464b856b380fff7eb8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaffCard
 --- !u!4 &1464257160 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8459750377799566894, guid: d499cafbd5583d142b8a6460c88b8451, type: 3}
@@ -8299,16 +8341,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 1807740520}
     m_Modifications:
     - target: {fileID: 1509412159788730184, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509412159788730184, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509412159788730184, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1807740521}
     - target: {fileID: 1509412159788730184, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ActivateBaff
+      value: PickBaff
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509412159788730184, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BaffManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1509412159788730184, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509412159788730184, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 741677452}
+    - target: {fileID: 1509412159788730184, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: BaffCard, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4384251748585294869, guid: 91f480242898be24882ac3b20cf9d16b, type: 3}
       propertyPath: m_Pivot.x
@@ -8564,9 +8626,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BaffManager
   _items:
+  - {fileID: 11400000, guid: 331ede01c1d88444aaaa303a78af2148, type: 2}
+  - {fileID: 11400000, guid: 084a23d4808b95b4fbb41d85a395b6e7, type: 2}
+  - {fileID: 11400000, guid: c84bc3edc90c64a4d86d7227200fece8, type: 2}
+  - {fileID: 11400000, guid: 62f511c52243b5742aeccb6b07519990, type: 2}
+  - {fileID: 11400000, guid: 3238a5151c9b4a14ca2198b11b9185c4, type: 2}
+  - {fileID: 11400000, guid: ba849da4019954c4b8b94e9277e4a9e3, type: 2}
+  - {fileID: 11400000, guid: 79e80641a111dc04e89e38edd7d4ef31, type: 2}
+  - {fileID: 11400000, guid: fed3fa3572ef02e42b7a340b0a58c8ec, type: 2}
+  - {fileID: 11400000, guid: 1ca199da32c4ae448af04e8f149d4e17, type: 2}
+  - {fileID: 11400000, guid: 50f7d6747f23da74d80bd95020d47b55, type: 2}
   - {fileID: 11400000, guid: 4e80a3c8f90be3a4fad59ac65723ed90, type: 2}
-  - {fileID: 11400000, guid: 4e80a3c8f90be3a4fad59ac65723ed90, type: 2}
-  - {fileID: 11400000, guid: 4e80a3c8f90be3a4fad59ac65723ed90, type: 2}
+  - {fileID: 11400000, guid: a6988e13b7310cc46a06e589aa229257, type: 2}
+  - {fileID: 11400000, guid: 6e9d51412e0ab0346a87540e910c028c, type: 2}
+  - {fileID: 11400000, guid: be4af75927dc8664ba5ca065ce465c1e, type: 2}
+  - {fileID: 11400000, guid: c5cc6fcf3fea7a6488cc9633761ff75f, type: 2}
+  - {fileID: 11400000, guid: 800fa95d53acdee4685c1a09518e3365, type: 2}
+  - {fileID: 11400000, guid: 8c09d534438914945ac6c9fa03fafab1, type: 2}
+  _cardBackround:
+  - {fileID: 21300000, guid: b0dfb8d39d523d64181f95d56990866e, type: 3}
+  - {fileID: 21300000, guid: e53ed967e851c09479aa075f0c791fd5, type: 3}
+  - {fileID: 21300000, guid: 28cee522ec52c3f4c92407bc4be6a0aa, type: 3}
 --- !u!114 &1807740522
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 212aee1d896a7bc49b2cd2ce42ff6513, type: 3}
-  m_Name: NewBaffItem
+  m_Name: Newspaper
   m_EditorClassIdentifier: Assembly-CSharp::BaffItem
   baff: {fileID: 11400000, guid: b5d6f6db1237f2846a1ae97979d3cf63, type: 2}
-  icon: {fileID: 21300000, guid: 31fad0cbedc09164e92a102eb118b82b, type: 3}
-  cardSprite: {fileID: 21300000, guid: 28cee522ec52c3f4c92407bc4be6a0aa, type: 3}
-  title: Poker
-  description: Doing nothing
+  icon: {fileID: 21300000, guid: 07151987807550c4d8db5ff76615bc4b, type: 3}
+  title: 
+  description: 
+  rarity: 0
