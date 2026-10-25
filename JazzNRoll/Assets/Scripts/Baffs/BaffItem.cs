@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum Rarity
 {
-    usual = 0, rare, legendary
+    usual = 0, rare, legendary, debaff
 }
 
 [CreateAssetMenu(fileName = "NewBaffItem", menuName = "Configs/Baff Item")]

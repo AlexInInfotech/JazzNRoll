@@ -15,7 +15,7 @@ public class CameraAnimationController : MonoBehaviour
     {
         animator.SetTrigger(BETMADE);
     }
-    public static void FinishRound()
+    public static void FinishRoll()
     {
         animator.SetTrigger(ROLLEND);
     }

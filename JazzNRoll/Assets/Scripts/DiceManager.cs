@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class DiceManager : MonoBehaviour
 {
@@ -20,8 +21,9 @@ public class DiceManager : MonoBehaviour
     }
     public void DiceRoll()
     {
-        if (_stoppedDiceCount < diceCount)
+        if (_stoppedDiceCount < diceCount || _remainingRolls == 0)
             return;
+        BaffManager.ActivateBaffs();
         _stoppedDiceCount = 0;
         ChangeAvailableRolls(_remainingRolls - 1);
         PointsManager.ClearPoints();
@@ -42,12 +44,23 @@ public class DiceManager : MonoBehaviour
     }
     private void TryFinishTurn()
     {
-        if (_remainingRolls != 0 || _stoppedDiceCount != diceCount)
+        if (_stoppedDiceCount != diceCount)
             return;
+        BaffManager.ActivateBaffs();
+        if (_remainingRolls != 0)
+            return;
+        StartCoroutine(Finish());
+        //BaffManager.SpawnNewBaffs();
+        //UIManager.FinishRound();
+        //CameraAnimationController.FinishRound();
+    }
+    IEnumerator Finish()
+    {
+        yield return new WaitForSeconds(3f);
+        ResultsVisualization.ClearResults();
         BaffManager.SpawnNewBaffs();
-        UIManager.FinishRound();
-        CameraAnimationController.FinishRound();
-
+        UIManager.RollsFinish();
+        CameraAnimationController.FinishRoll();
     }
     private void Start()
     {

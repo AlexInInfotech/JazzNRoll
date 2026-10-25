@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class BaffManager : MonoBehaviour
 {
@@ -10,19 +11,29 @@ public class BaffManager : MonoBehaviour
     static BaffItem[] usualItems;
     static BaffItem[] rareItems;
     static BaffItem[] legendaryItems;
+    static BaffItem[] debaffs;
     static GameObject[] cards;
     static Sprite[] cardBackground;
+    static List<Baff> baffs = new List<Baff>();
     static int rareChance = 40;
     static int legendaryChance = 10;
     static byte cardsCount;
+    public static int pityPoints = 0;
 
     static byte usualUsedCount = 0;
     static byte rareUsedCount = 0;
     static byte legendaryUsedCount = 0;
+    static byte debaffUsedCount = 0;
+    public static void ActivateBaffs() {
+        foreach (Baff baff in baffs)
+            baff.ModifyGame();
+    }
     public void PickBaff(BaffCard baffCard)
     {
-        baffCard.baffItem.baff.ModifyGame();
-        UIManager.BaffPicked();
+        baffCard.baffItem.baff.Start();
+        baffs.Add(baffCard.baffItem.baff);
+        RoundManager.NextRound();
+        BaffVisualization.AddBaffToList(baffCard.baffItem);
         switch (baffCard.baffItem.rarity)
         {
             case Rarity.usual:
@@ -40,11 +51,17 @@ public class BaffManager : MonoBehaviour
                 legendaryUsedCount += 1;
                 //PrintAvailableCard(legendaryItems, legendaryDropped);
                 break;
+            case Rarity.debaff:
+                MoveToUsed(debaffs, baffCard.baffItem, debaffUsedCount);
+                debaffUsedCount += 1;
+                //PrintAvailableCard(legendaryItems, legendaryDropped);
+                break;
         }
 
         ShuffleCards(usualItems, usualUsedCount);
         ShuffleCards(rareItems, rareUsedCount);
         ShuffleCards(legendaryItems, legendaryUsedCount);
+        ShuffleCards(debaffs, debaffUsedCount);
     }
     //private static void PrintAvailableCard(BaffItem[] cards, int index)
     //{
@@ -62,11 +79,23 @@ public class BaffManager : MonoBehaviour
     }
     public static void SpawnNewBaffs()
     {
-        BaffItem[] randomItems = GetRandomItems();
+        BaffItem[] randomItems = new BaffItem[3];
+        if (pityPoints >= 0)
+            randomItems = GetRandomBaffs();
+        else
+            randomItems = GetRandomDebaffs();
         for (int i = 0; i < cardsCount; i++)
             UpdateCard(randomItems[i], cards[i]);
     }
-    private static BaffItem[] GetRandomItems()
+    private static BaffItem[] GetRandomDebaffs()
+    {
+        BaffItem[] randomItems = new BaffItem[cardsCount];
+        
+        for (byte i = 0; i < cardsCount; i++)
+            randomItems[i] = GetRandomCard(debaffs, debaffUsedCount, i);
+        return randomItems;
+    }
+    private static BaffItem[] GetRandomBaffs()
     {
         BaffItem[] randomItems = new BaffItem[cardsCount];
         int randomNum = 0; 
@@ -101,20 +130,25 @@ public class BaffManager : MonoBehaviour
         int countUsual = 0;
         int countRare = 0;
         int countLegendary = 0;
-        for(int i =0; i < _items.Length; i++)
+        int countDebaff = 0;
+        for (int i =0; i < _items.Length; i++)
             if (_items[i].rarity == Rarity.usual)  countUsual++;
             else if (_items[i].rarity == Rarity.rare) countRare++;
-            else countLegendary++;
+            else if (_items[i].rarity == Rarity.legendary) countLegendary++;
+            else countDebaff++;
         usualItems = new BaffItem[countUsual];
         rareItems = new BaffItem[countRare];
         legendaryItems = new BaffItem[countLegendary];
-        foreach(BaffItem item in _items)
+        debaffs = new BaffItem[countDebaff];
+        foreach (BaffItem item in _items)
             if (item.rarity == Rarity.usual) usualItems[--countUsual] = item;
-            else if(item.rarity == Rarity.rare) rareItems[--countRare] = item;
-            else legendaryItems[--countLegendary] = item;
+            else if (item.rarity == Rarity.rare) rareItems[--countRare] = item;
+            else if (item.rarity == Rarity.legendary) legendaryItems[--countLegendary] = item;
+            else debaffs[--countDebaff] = item;
         ShuffleCards(usualItems);
         ShuffleCards(rareItems);
         ShuffleCards(legendaryItems);
+        ShuffleCards(debaffs);
         cardsCount = (byte)transform.childCount;
         cards = new GameObject[cardsCount];
         for (int i = 0; i < cardsCount; i++)

@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _betList;
     [SerializeField] private GameObject _baffList;
     [SerializeField] private GameObject _resultsRender;
+    [SerializeField] private GameObject _dutyButton;
 
     private static TextMeshProUGUI countRollsUI;
     private static TextMeshProUGUI pointsUI;
@@ -17,6 +18,7 @@ public class UIManager : MonoBehaviour
     private static GameObject betList;
     private static GameObject baffList;
     private static GameObject resultsRender;
+    private static GameObject dutyButton;
     private const string pointsText = "Очки: ";
     private const string rollsText = "Броски: ";
     public static void BetMade()
@@ -24,40 +26,51 @@ public class UIManager : MonoBehaviour
         rollButton.SetActive(true);
         resultsRender.SetActive(true);
 
+        dutyButton.SetActive(false);
 
         betList.SetActive(false);
         baffList.SetActive(false);
     }
-    public static void FinishRound()
+    public static void RollsFinish()
     {
         baffList.SetActive(true);
 
 
+        dutyButton.SetActive(false);
         betList.SetActive(false);
         rollButton.SetActive(false);
         resultsRender.SetActive(false);
     }
-    public static void BaffPicked()
+    public static void DutyTime()
+    {
+        dutyButton.SetActive(true);
+
+
+        baffList.SetActive(false);
+        betList.SetActive(false);
+        rollButton.SetActive(false);
+        resultsRender.SetActive(false);
+    }
+    public static void StartTurn()
     {
         betList.SetActive(true);
 
+        dutyButton.SetActive(false);
 
         baffList.SetActive(false);
         rollButton.SetActive(false);
         resultsRender.SetActive(false);
     }
-    private void Start()
+    private void Awake()
     {
+        dutyButton = _dutyButton;
         pointsUI = _pointsUI;
         countRollsUI = _countRollsUI;
         rollButton = _rollButton;
         betList = _betList;
         baffList = _baffList;
         resultsRender= _resultsRender;
-        resultsRender.SetActive(false);
-        betList.SetActive(true);
-        rollButton.SetActive(false);
-        baffList.SetActive(false);
+        StartTurn();
     }
     public static void PrintPoints(string value)
     {

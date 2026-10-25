@@ -5,10 +5,11 @@ public class BetManager : MonoBehaviour
 
     public static bool betIsMade = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public void GetBet(int bet)
+    public void GetBet(Bet bet)
     {
-        PointsManager.AddToPoints(-bet);
-        DiceManager.ChangeAvailableRolls(bet / 25);
+        PointsManager.AddToPoints(-bet.cost);
+        DiceManager.ChangeAvailableRolls(bet.rollsCount);
+        BaffManager.pityPoints += bet.pityPoints;
         UIManager.BetMade();
         CameraAnimationController.BetMade();
     }

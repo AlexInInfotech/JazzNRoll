@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+public enum ComboType { NoCombo, Pair, Set, Street, FourOfAKind,TwoPairs, Flush,  FullHouse, Royal }
 public static class PointsManager 
 {
-    private enum ComboType { NoCombo, Pair, Set, Street, FourOfAKind,TwoPairs, Flush,  FullHouse, Royal }
 
-    private static readonly Dictionary<ComboType, float> ComboModifiers = new Dictionary<ComboType, float>
+    public static Dictionary<ComboType, float> ComboModifiers = new Dictionary<ComboType, float>
     {
         { ComboType.NoCombo, 1.00f },
         { ComboType.Pair, 1.30f },
@@ -17,12 +17,15 @@ public static class PointsManager
         { ComboType.Royal, 5.00f }
     };
 
-
+    public static int gainedPoints = 0;
 
     private static int currentPoints = 0;
     private static int[] diceFaceCounts = new int[6+1];
     private static int rolledDiceCount = 0;
-   
+   public static int GetPoints()
+    {
+        return currentPoints;
+    }
     public static void AddToPoints(int value)
     {
         currentPoints += value;
@@ -39,7 +42,11 @@ public static class PointsManager
         diceFaceCounts[value]++;
         rolledDiceCount++;
         if (rolledDiceCount == DiceManager.diceCount)
-            ResultsVisualization.ShowGainedPoints(CountResult());
+        {
+            int result = CountResult();
+            ResultsVisualization.ShowGainedPoints(result);
+            gainedPoints += result;
+        }
             //AddToPoints(CountResult());
 
     }
@@ -48,6 +55,7 @@ public static class PointsManager
     {
         int result = 0;
         ComboType combo = ComboType.NoCombo;
+        ComboType combo2 = ComboType.NoCombo;
         byte pairCount = 0;
         bool hasSet = false;
         byte streetCount = 0;
@@ -74,25 +82,34 @@ public static class PointsManager
                     combo = ComboType.Flush;
                     break;
             }
-            if (pairCount == 1 && combo == ComboType.NoCombo)
-                if (hasSet)
-                    combo = ComboType.FullHouse;
-                else
-                    combo = ComboType.Pair;
-
-            if (hasSet && combo == ComboType.NoCombo)
-                combo = ComboType.Set;
+            //if (pairCount == 1 && combo == ComboType.NoCombo)
+            //    if (hasSet)
+            //        combo = ComboType.FullHouse;
+            //    else
+            //        combo = ComboType.Pair;
+            //else if (hasSet && combo == ComboType.NoCombo)
+            //    combo = ComboType.Set;
             if (diceFaceCounts[i] != 0)
             {
                 streetCount++;
                 if (streetCount == 3)
-                    combo = ComboType.Street;
-                 else if (streetCount == 5)
-                     combo = ComboType.Royal;
+                    combo2 = ComboType.Street;
+                else if (streetCount == 5)
+                {
+                    combo = ComboType.Royal;
+                    combo2 = ComboType.NoCombo;
+                }
             }
         }
-        Debug.Log(combo);
-        return (int)(result* ComboModifiers.GetValueOrDefault<ComboType, float>(combo));
+
+        if (pairCount == 1 && hasSet)
+            combo = ComboType.FullHouse;
+        else if(pairCount == 1)
+                combo = ComboType.Pair;
+        else if (hasSet)
+            combo = ComboType.Set;
+        Debug.Log(combo + " " + combo2);
+        return (int)(result* ComboModifiers.GetValueOrDefault<ComboType, float>(combo) * ComboModifiers.GetValueOrDefault<ComboType, float>(combo2));
 
     }
 }
