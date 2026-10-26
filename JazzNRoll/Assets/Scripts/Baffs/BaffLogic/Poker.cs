@@ -7,14 +7,14 @@ public class Poker : Baff
     int lastScore;
     public override void Start()
     {
-        lastScore = PointsManager.gainedPoints;
+        lastScore = PointsManager.totalGainedPoints;
     }
     public override void ModifyGame()
     {
-        if (PointsManager.gainedPoints - lastScore < deltaScore)
+        if (PointsManager.totalGainedPoints - lastScore < deltaScore)
             return;
         Debug.Log("Poker");
-        lastScore = PointsManager.gainedPoints;
-        PointsManager.AddToPoints(extraPoints);
+        lastScore = PointsManager.totalGainedPoints;
+        PointsManager.AddToScore(extraPoints);
     }
 }

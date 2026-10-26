@@ -72,7 +72,7 @@ public class UIManager : MonoBehaviour
         resultsRender= _resultsRender;
         StartTurn();
     }
-    public static void PrintPoints(string value)
+    public static void PrintScore(string value)
     {
         pointsUI.text = pointsText + value;
     }

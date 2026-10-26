@@ -13,7 +13,10 @@ public class DiceManager : MonoBehaviour
 
     private Dice[] dice;
     private Vector3[] startPositions;
-
+    public static void AddRolls(int value)
+    {
+        ChangeAvailableRolls(_remainingRolls + value);
+    }
     public static void ChangeAvailableRolls(int value)
     {
         _remainingRolls = value;
@@ -23,11 +26,11 @@ public class DiceManager : MonoBehaviour
     {
         if (_stoppedDiceCount < diceCount || _remainingRolls == 0)
             return;
-        BaffManager.ActivateBaffs();
         _stoppedDiceCount = 0;
         ChangeAvailableRolls(_remainingRolls - 1);
-        PointsManager.ClearPoints();
+        PointsManager.ClearPreviousResult();
         ResultsVisualization.ClearResults();
+        BaffManager.ActivateBaffs();
         for (int i = 0; i < dice.Length; i++)
         {
             dice[i].gameObject.transform.position = startPositions[i];
@@ -35,7 +38,7 @@ public class DiceManager : MonoBehaviour
         }
     }
 
-    private void ValueAppeared(int value)
+    private void ValueAppeared(byte value)
     {
         PointsManager.RegisterDiceRoll(value);
         ResultsVisualization.ShowAppearedDiceValue(value);

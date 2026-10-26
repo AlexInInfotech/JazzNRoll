@@ -14,9 +14,9 @@ public class DutyManager : MonoBehaviour
     }
     public void PayDuty()
     {
-        if (PointsManager.GetPoints() >= duties[dutyIndex])
+        if (PointsManager.GetScore() >= duties[dutyIndex])
         {
-            PointsManager.AddToPoints(-duties[dutyIndex]);
+            PointsManager.AddToScore(-duties[dutyIndex]);
             dutyIndex++;
             ShowCurrentDuty();
             UIManager.StartTurn();

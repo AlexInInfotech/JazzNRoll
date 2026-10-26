@@ -22,7 +22,7 @@ public class Dice : MonoBehaviour
     }
 
     
-    public IEnumerator DieRoll(Action<int> callback)
+    public IEnumerator DieRoll(Action<byte> callback)
     {
         Physics();
         yield return new WaitForSeconds(0.5f);
@@ -51,7 +51,7 @@ public class Dice : MonoBehaviour
     }
 
 
-    private int GetCurrentFace()
+    private byte GetCurrentFace()
     {
         Vector3[] localDirections = new Vector3[]
         {
@@ -62,9 +62,9 @@ public class Dice : MonoBehaviour
             -transform.forward,     //  грань 5
             -transform.up    //  грань 6
         };
-        for (int i = 0; i < localDirections.Length; i++)
+        for (byte i = 0; i < localDirections.Length; i++)
             if (Vector3.Dot(localDirections[i], Vector3.up) > 1 - fault)
-                return 1 + i;
+                return (byte)(1 + i);
         return 0;
     }
 

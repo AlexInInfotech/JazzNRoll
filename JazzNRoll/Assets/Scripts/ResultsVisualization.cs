@@ -31,7 +31,7 @@ public class ResultsVisualization : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         pointsUI.text = "";
-        PointsManager.AddToPoints(result);
+        PointsManager.AddToScore(result);
     }
 
     public static void ShowAppearedDiceValue(int value)

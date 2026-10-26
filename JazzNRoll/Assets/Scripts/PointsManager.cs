@@ -3,8 +3,28 @@ using UnityEngine;
 public enum ComboType { NoCombo, Pair, Set, Street, FourOfAKind,TwoPairs, Flush,  FullHouse, Royal }
 public static class PointsManager 
 {
-
-    public static Dictionary<ComboType, float> ComboModifiers = new Dictionary<ComboType, float>
+    //public static bool IsNumsInDropped(byte[] nums)
+    //{
+    //    byte count = 0;
+    //    foreach (byte num in nums)
+    //        count += (byte)diceFaceCounts[num];
+    //    return count != 0;
+    //}
+    public static byte CountNumInDropped(byte num)
+    {
+        if (num >0 && num <=6)
+            return diceFaceCounts[num];
+        return 0;
+    }
+    public static void AddToComboModifiers(float value, ComboType[] types = null)
+    {
+        if (types == null)
+            types = (ComboType[])System.Enum.GetValues(typeof(ComboType));
+        for (int i = 0; i < types.Length; i++)
+            if (types[i] != ComboType.NoCombo)
+                ComboModifiers[types[i]] += value;
+    }
+    private static Dictionary<ComboType, float> ComboModifiers = new Dictionary<ComboType, float>
     {
         { ComboType.NoCombo, 1.00f },
         { ComboType.Pair, 1.30f },
@@ -17,27 +37,31 @@ public static class PointsManager
         { ComboType.Royal, 5.00f }
     };
 
-    public static int gainedPoints = 0;
+    public static int totalGainedPoints { get; private set; }
+    public static ComboType[] currentCombos { get; private set; } = new ComboType[2];
 
-    private static int currentPoints = 0;
-    private static int[] diceFaceCounts = new int[6+1];
+
+    private static int currentScore = 0;
+    private static byte[] diceFaceCounts = new byte[6+1];
     private static int rolledDiceCount = 0;
-   public static int GetPoints()
+   public static int GetScore()
     {
-        return currentPoints;
+        return currentScore;
     }
-    public static void AddToPoints(int value)
+    public static void AddToScore(int value)
     {
-        currentPoints += value;
-        UIManager.PrintPoints(currentPoints.ToString());
+        currentScore += value;
+        UIManager.PrintScore(currentScore.ToString());
     }
-    public static void ClearPoints()
+    public static void ClearPreviousResult()
     {
+        currentCombos[0] = ComboType.NoCombo;
+        currentCombos[1] = ComboType.NoCombo;
         rolledDiceCount = 0;
         for (int i = 0; i < diceFaceCounts.Length; i++) 
             diceFaceCounts[i] = 0;
     }
-    public static void RegisterDiceRoll(int value)
+    public static void RegisterDiceRoll(byte value)
     {
         diceFaceCounts[value]++;
         rolledDiceCount++;
@@ -45,17 +69,18 @@ public static class PointsManager
         {
             int result = CountResult();
             ResultsVisualization.ShowGainedPoints(result);
-            gainedPoints += result;
+            totalGainedPoints += result;
         }
             //AddToPoints(CountResult());
 
     }
+
     
     private static int CountResult()
     {
         int result = 0;
-        ComboType combo = ComboType.NoCombo;
-        ComboType combo2 = ComboType.NoCombo;
+        currentCombos[0] = ComboType.NoCombo;
+        currentCombos[1] = ComboType.NoCombo;
         byte pairCount = 0;
         bool hasSet = false;
         byte streetCount = 0;
@@ -70,16 +95,16 @@ public static class PointsManager
                 case 2:
                     pairCount++;
                     if (pairCount == 2)
-                        combo = ComboType.TwoPairs;
+                        currentCombos[0] = ComboType.TwoPairs;
                     break;
                 case 3:
                     hasSet = true;
                     break;
                 case 4:
-                    combo = ComboType.FourOfAKind;
+                    currentCombos[0] = ComboType.FourOfAKind;
                     break;
                 case 5:
-                    combo = ComboType.Flush;
+                    currentCombos[0] = ComboType.Flush;
                     break;
             }
             //if (pairCount == 1 && combo == ComboType.NoCombo)
@@ -93,23 +118,27 @@ public static class PointsManager
             {
                 streetCount++;
                 if (streetCount == 3)
-                    combo2 = ComboType.Street;
+                    currentCombos[1] = ComboType.Street;
                 else if (streetCount == 5)
                 {
-                    combo = ComboType.Royal;
-                    combo2 = ComboType.NoCombo;
+                    currentCombos[0] = ComboType.Royal;
+                    currentCombos[1] = ComboType.NoCombo;
                 }
             }
         }
 
         if (pairCount == 1 && hasSet)
-            combo = ComboType.FullHouse;
+            currentCombos[0] = ComboType.FullHouse;
         else if(pairCount == 1)
-                combo = ComboType.Pair;
+            currentCombos[0] = ComboType.Pair;
         else if (hasSet)
-            combo = ComboType.Set;
-        Debug.Log(combo + " " + combo2);
-        return (int)(result* ComboModifiers.GetValueOrDefault<ComboType, float>(combo) * ComboModifiers.GetValueOrDefault<ComboType, float>(combo2));
+            currentCombos[0] = ComboType.Set;
+
+        Debug.Log(currentCombos[0] + " " + currentCombos[1]);
+
+
+
+        return (int)(result* ComboModifiers.GetValueOrDefault<ComboType, float>(currentCombos[0]) * ComboModifiers.GetValueOrDefault<ComboType, float>(currentCombos[1]));
 
     }
 }
