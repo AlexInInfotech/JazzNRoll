@@ -4,6 +4,7 @@ using UnityEngine;
 public class Pearls : Baff
 {
     [SerializeField] ComboType[] conditionalTypes;
+    [SerializeField] float koef;
     int gainedConditionPoints = 0;
     int lastScore;
     public override void Start()
@@ -14,7 +15,7 @@ public class Pearls : Baff
     {
         if (PointsManager.totalGainedPoints == lastScore)
             return;
-        PointsManager.AddToScore(gainedConditionPoints);
+        PointsManager.AddToScore((int)(gainedConditionPoints* koef));
         if (IsComboDropped())
             gainedConditionPoints += PointsManager.totalGainedPoints - lastScore;
         lastScore = PointsManager.totalGainedPoints;

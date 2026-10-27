@@ -3,7 +3,7 @@
 public class CubanCigarette : Baff
 {
     [SerializeField] int workChance;
-    [SerializeField] int extraKoeff;
+    [SerializeField] int additiveKoeff;
     int lastScore;
     bool active =false;
     public override void Start()
@@ -16,7 +16,7 @@ public class CubanCigarette : Baff
             if (Random.Range(0, 100) < workChance)
             {
                 Debug.Log("CubanCigarette Baff");
-                PointsManager.AddToComboModifiers(extraKoeff);
+                PointsManager.AddToComboModifiers(additiveKoeff);
                 active = true;
             }
         if (PointsManager.totalGainedPoints != lastScore)//после броска
@@ -25,7 +25,7 @@ public class CubanCigarette : Baff
             if (active)
             {
                 Debug.Log("CubanCigarette ddeBaff");
-                PointsManager.AddToComboModifiers(-extraKoeff);
+                PointsManager.AddToComboModifiers(-additiveKoeff);
                 active = false;
             }
         }

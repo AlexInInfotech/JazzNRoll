@@ -18,8 +18,8 @@ public class BaffManager : MonoBehaviour
     static int rareChance = 40;
     static int legendaryChance = 10;
     static byte cardsCount;
-    public static int pityPoints = 0;
-
+    public static int pityPoints { get; private set; } = 0;
+    public const int maxPity = 6;
     static byte usualUsedCount = 0;
     static byte rareUsedCount = 0;
     static byte legendaryUsedCount = 0;
@@ -27,6 +27,16 @@ public class BaffManager : MonoBehaviour
     public static void ActivateBaffs() {
         foreach (Baff baff in baffs)
             baff.ModifyGame();
+    }
+
+    public static void AddToPity(int value)
+    {
+        pityPoints += value;
+        UIManager.ShowPity();
+    }
+    public static void AddToLegendaryChance(int value)
+    {
+        legendaryChance += value;
     }
     public void PickBaff(BaffCard baffCard)
     {

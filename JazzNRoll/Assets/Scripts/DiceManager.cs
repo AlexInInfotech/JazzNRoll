@@ -8,26 +8,26 @@ public class DiceManager : MonoBehaviour
     [SerializeField] private float minTorqueForce = 10f;
     [SerializeField] private float maxTorqueForce = 20f;
     public static int diceCount;
-    private static int _remainingRolls = 0;
+    public static int remainingRolls { get; private set; } = 0;
     int _stoppedDiceCount;
 
     private Dice[] dice;
     private Vector3[] startPositions;
     public static void AddRolls(int value)
     {
-        ChangeAvailableRolls(_remainingRolls + value);
+        ChangeAvailableRolls(remainingRolls + value);
     }
     public static void ChangeAvailableRolls(int value)
     {
-        _remainingRolls = value;
+        remainingRolls = value;
         UIManager.PrintRemainingRolls(value.ToString());
     }
     public void DiceRoll()
     {
-        if (_stoppedDiceCount < diceCount || _remainingRolls == 0)
+        if (_stoppedDiceCount < diceCount || remainingRolls <= 0)
             return;
         _stoppedDiceCount = 0;
-        ChangeAvailableRolls(_remainingRolls - 1);
+        ChangeAvailableRolls(remainingRolls - 1);
         PointsManager.ClearPreviousResult();
         ResultsVisualization.ClearResults();
         BaffManager.ActivateBaffs();
@@ -50,7 +50,7 @@ public class DiceManager : MonoBehaviour
         if (_stoppedDiceCount != diceCount)
             return;
         BaffManager.ActivateBaffs();
-        if (_remainingRolls != 0)
+        if (remainingRolls > 0)
             return;
         StartCoroutine(Finish());
         //BaffManager.SpawnNewBaffs();

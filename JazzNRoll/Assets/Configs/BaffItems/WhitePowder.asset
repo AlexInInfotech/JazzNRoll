@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212aee1d896a7bc49b2cd2ce42ff6513, type: 3}
   m_Name: WhitePowder
   m_EditorClassIdentifier: Assembly-CSharp::BaffItem
-  baff: {fileID: 11400000, guid: c5c0b0876e084c44daef785c8dac22c4, type: 2}
+  baff: {fileID: 11400000, guid: 7689cecb1d42453429802d3e987fcbc2, type: 2}
   icon: {fileID: 21300000, guid: 23752a421a924b84f88715cec07fe495, type: 3}
   title: 
   description: 

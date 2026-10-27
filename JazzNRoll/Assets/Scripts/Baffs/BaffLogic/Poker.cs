@@ -3,7 +3,7 @@ using UnityEngine;
 public class Poker : Baff
 {
     [SerializeField] int deltaScore;
-    [SerializeField] int extraPoints;
+    [SerializeField] int additivePoints;
     int lastScore;
     public override void Start()
     {
@@ -15,6 +15,6 @@ public class Poker : Baff
             return;
         Debug.Log("Poker");
         lastScore = PointsManager.totalGainedPoints;
-        PointsManager.AddToScore(extraPoints);
+        PointsManager.AddToScore(additivePoints);
     }
 }

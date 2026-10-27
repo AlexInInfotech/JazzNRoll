@@ -23,8 +23,9 @@ public static class PointsManager
         for (int i = 0; i < types.Length; i++)
             if (types[i] != ComboType.NoCombo)
                 ComboModifiers[types[i]] += value;
+        UIManager.UpdateKoefsVisualization();
     }
-    private static Dictionary<ComboType, float> ComboModifiers = new Dictionary<ComboType, float>
+    public static Dictionary<ComboType, float> ComboModifiers { get; private set; } = new Dictionary<ComboType, float>
     {
         { ComboType.NoCombo, 1.00f },
         { ComboType.Pair, 1.30f },

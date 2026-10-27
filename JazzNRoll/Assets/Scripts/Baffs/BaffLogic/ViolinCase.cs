@@ -4,7 +4,7 @@
 public class ViolinCase : Baff
 {
     [SerializeField] int deltaScore;
-    [SerializeField] float extraKoeff;
+    [SerializeField] float additiveKoeff;
     int lastScore;
     bool Activate = false;
     public override void Start()
@@ -16,12 +16,12 @@ public class ViolinCase : Baff
         if (Activate && PointsManager.totalGainedPoints - lastScore!= 0)//модификации активируются перед броском и после, а эффект должен продержаться один бросок
         {
             Activate = false;
-            PointsManager.AddToComboModifiers(-extraKoeff);
+            PointsManager.AddToComboModifiers(-additiveKoeff);
         }
         if (PointsManager.totalGainedPoints - lastScore < deltaScore)
             return;
         Debug.Log("ViolinCase Baff");
-        PointsManager.AddToComboModifiers(extraKoeff); 
+        PointsManager.AddToComboModifiers(additiveKoeff); 
         lastScore = PointsManager.totalGainedPoints;
         Activate = true;
 

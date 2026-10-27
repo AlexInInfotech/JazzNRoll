@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ViolinCase
   m_EditorClassIdentifier: Assembly-CSharp::ViolinCase
   deltaScore: 150
-  extraKoeff: 1
+  additiveKoeff: 1

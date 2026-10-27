@@ -1,5 +1,9 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using System.Collections.Specialized;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,6 +15,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _baffList;
     [SerializeField] private GameObject _resultsRender;
     [SerializeField] private GameObject _dutyButton;
+    [SerializeField] private TMP_Text _koeffsText;
+    [SerializeField] private Scrollbar _pityBar;
 
     private static TextMeshProUGUI countRollsUI;
     private static TextMeshProUGUI pointsUI;
@@ -19,8 +25,24 @@ public class UIManager : MonoBehaviour
     private static GameObject baffList;
     private static GameObject resultsRender;
     private static GameObject dutyButton;
+    private static TMP_Text koeffsText;
+    private static Scrollbar pityBar;
     private const string pointsText = "Очки: ";
     private const string rollsText = "Броски: ";
+    public static void UpdateKoefsVisualization()
+    {
+        string s = "";
+        ComboType[] types = (ComboType[])System.Enum.GetValues(typeof(ComboType));
+        for (int i = 0; i < types.Length; i++)
+            if (types[i] != ComboType.NoCombo)
+                s += PointsManager.ComboModifiers[types[i]].ToString()+"\n";
+        koeffsText.text = s;
+    }
+    public static void ShowPity()
+    {
+        Debug.Log((float)(BaffManager.pityPoints + BaffManager.maxPity) / (2 * BaffManager.maxPity));
+        pityBar.value = (float)(BaffManager.pityPoints + BaffManager.maxPity) / (2*BaffManager.maxPity);
+    }
     public static void BetMade()
     {
         rollButton.SetActive(true);
@@ -70,6 +92,10 @@ public class UIManager : MonoBehaviour
         betList = _betList;
         baffList = _baffList;
         resultsRender= _resultsRender;
+        koeffsText = _koeffsText;
+        pityBar = _pityBar;
+        ShowPity();
+        UpdateKoefsVisualization();
         StartTurn();
     }
     public static void PrintScore(string value)

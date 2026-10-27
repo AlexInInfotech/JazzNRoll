@@ -1,13 +1,20 @@
 ﻿using TMPro;
 using UnityEditor.Search;
 using UnityEngine;
+using UnityEngine.Diagnostics;
 
 public class DutyManager : MonoBehaviour
 {
-    [SerializeField] private int[] duties;
+    [SerializeField] private int[] _duties;
+    static int[] duties;
     static TextMeshProUGUI dutyUI;
-    byte dutyIndex = 0;
-    string DUTY = "Долг: ";
+    static byte dutyIndex = 0;
+    const string DUTY = "Долг: ";
+
+    public static int GetCurrentDuty()
+    {
+        return duties[dutyIndex];
+    }
     private void ShowCurrentDuty()
     { 
         dutyUI.text = DUTY + duties[dutyIndex];
@@ -28,6 +35,7 @@ public class DutyManager : MonoBehaviour
     }
     void Start()
     {
+        duties = _duties;
         dutyUI = GetComponent<TextMeshProUGUI>();
         ShowCurrentDuty();
     }

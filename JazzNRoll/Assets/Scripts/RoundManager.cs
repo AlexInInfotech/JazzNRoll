@@ -6,6 +6,10 @@ public class RoundManager : MonoBehaviour
     static TextMeshProUGUI roundCounter;
     static byte totalRounds = 3;
     static byte currentRound =0;
+    public static bool IsLastRound()
+    {
+        return currentRound == totalRounds;
+    }
     private void Start()
     {
         roundCounter = GetComponent<TextMeshProUGUI>();
