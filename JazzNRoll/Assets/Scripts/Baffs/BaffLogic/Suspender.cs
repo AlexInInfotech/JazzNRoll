@@ -20,7 +20,7 @@ public class Suspender : Baff
             if (gainedConditionPoints %2 == 0)
             {
                 Debug.Log("Suspender");
-                PointsManager.AddToScore((int)Mathf.Ceil((float)(gainedConditionPoints * (100 + additiveProcent) / 100)));
+                PointsManager.AddToScore((int)Mathf.Ceil((float)(gainedConditionPoints * additiveProcent / 100)));
             }
 
         }

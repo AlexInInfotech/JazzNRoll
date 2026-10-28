@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Dice : MonoBehaviour
 {
+    public byte[] valueOnFaces = new byte[6];
     private Rigidbody rb => GetComponent<Rigidbody>();
     private Vector3 baseVector = Vector3.forward;
     const float fault = 0.3f;
@@ -44,7 +45,7 @@ public class Dice : MonoBehaviour
     {
         float movingForce = UnityEngine.Random.Range(_minForce, _maxForce);
         float torqueForce = UnityEngine.Random.Range(_minTorqueFroce, _maxTorqueFroce);
-        Vector3 forceAxis = new Vector3(0, UnityEngine.Random.Range(0.1f, 1f), UnityEngine.Random.Range(0.1f, 1f)) + baseVector;
+        Vector3 forceAxis = new Vector3(0, UnityEngine.Random.Range(0.5f, 1.2f), UnityEngine.Random.Range(0.1f, 1f)) + baseVector;
         Vector3 rotationAxis = UnityEngine.Random.rotation.eulerAngles;
         rb.AddTorque(rotationAxis * torqueForce, ForceMode.Impulse);
         rb.AddForce(forceAxis * movingForce, ForceMode.Impulse);
@@ -64,7 +65,7 @@ public class Dice : MonoBehaviour
         };
         for (byte i = 0; i < localDirections.Length; i++)
             if (Vector3.Dot(localDirections[i], Vector3.up) > 1 - fault)
-                return (byte)(1 + i);
+                return valueOnFaces[i];
         return 0;
     }
 

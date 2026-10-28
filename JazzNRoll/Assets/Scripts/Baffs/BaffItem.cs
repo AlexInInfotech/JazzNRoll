@@ -6,11 +6,11 @@ public enum Rarity
 }
 
 [CreateAssetMenu(fileName = "NewBaffItem", menuName = "Configs/Baff Item")]
-public class BaffItem : ScriptableObject
+public class BaffItem : Item
 {
     public Baff baff;
-    public Sprite icon;
-    public string title;
-    public string description;
-    public Rarity rarity;
+    public override void Start()
+    {
+        baff.Start();
+    }
 }

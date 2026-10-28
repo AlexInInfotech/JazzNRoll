@@ -6,11 +6,11 @@ using System.Collections.Generic;
 
 public class BaffManager : MonoBehaviour
 {
-    [SerializeField] BaffItem[] _items;
+    [SerializeField] Item[] _items;
     [SerializeField] Sprite[] _cardBackground;
-    static BaffItem[] usualItems;
-    static BaffItem[] rareItems;
-    static BaffItem[] legendaryItems;
+    static Item[] usualItems;
+    static Item[] rareItems;
+    static Item[] legendaryItems;
     static BaffItem[] debaffs;
     static GameObject[] cards;
     static Sprite[] cardBackground;
@@ -38,15 +38,15 @@ public class BaffManager : MonoBehaviour
             else if (_items[i].rarity == Rarity.rare) countRare++;
             else if (_items[i].rarity == Rarity.legendary) countLegendary++;
             else countDebaff++;
-        usualItems = new BaffItem[countUsual];
-        rareItems = new BaffItem[countRare];
-        legendaryItems = new BaffItem[countLegendary];
+        usualItems = new Item[countUsual];
+        rareItems = new Item[countRare];
+        legendaryItems = new Item[countLegendary];
         debaffs = new BaffItem[countDebaff];
-        foreach (BaffItem item in _items)
+        foreach (Item item in _items)
             if (item.rarity == Rarity.usual) usualItems[--countUsual] = item;
             else if (item.rarity == Rarity.rare) rareItems[--countRare] = item;
             else if (item.rarity == Rarity.legendary) legendaryItems[--countLegendary] = item;
-            else debaffs[--countDebaff] = item;
+            else debaffs[--countDebaff] = item as BaffItem;
         ShuffleCards(usualItems);
         ShuffleCards(rareItems);
         ShuffleCards(legendaryItems);
@@ -74,29 +74,33 @@ public class BaffManager : MonoBehaviour
     }
     public void PickBaff(BaffCard baffCard)
     {
-        baffCard.baffItem.baff.Start();
-        baffs.Add(baffCard.baffItem.baff);
+        //baffCard.item.baff.Start();
+        baffCard.item.Start();
+        if (baffCard.item is BaffItem baffItem)
+        {
+            baffs.Add(baffItem.baff);
+            BaffVisualization.AddBaffToList(baffItem);
+        }
         RoundManager.NextRound();
-        BaffVisualization.AddBaffToList(baffCard.baffItem);
-        switch (baffCard.baffItem.rarity)
+        switch (baffCard.item.rarity)
         {
             case Rarity.usual:
-                MoveToUsed(usualItems, baffCard.baffItem, usualUsedCount);
+                MoveToUsed(usualItems, baffCard.item, usualUsedCount);
                 usualUsedCount += 1;
                 //PrintAvailableCard(usualItems, usualDropped);
                 break;
             case Rarity.rare:
-                MoveToUsed(rareItems, baffCard.baffItem, rareUsedCount);
+                MoveToUsed(rareItems, baffCard.item, rareUsedCount);
                 rareUsedCount += 1;
                 //PrintAvailableCard(rareItems, rareDropped);
                 break;
             case Rarity.legendary:
-                MoveToUsed(legendaryItems, baffCard.baffItem, legendaryUsedCount);
+                MoveToUsed(legendaryItems, baffCard.item, legendaryUsedCount);
                 legendaryUsedCount += 1;
                 //PrintAvailableCard(legendaryItems, legendaryDropped);
                 break;
             case Rarity.debaff:
-                MoveToUsed(debaffs, baffCard.baffItem, debaffUsedCount);
+                MoveToUsed(debaffs, baffCard.item, debaffUsedCount);
                 debaffUsedCount += 1;
                 //PrintAvailableCard(legendaryItems, legendaryDropped);
                 break;
@@ -114,16 +118,16 @@ public class BaffManager : MonoBehaviour
     //        str = str+ " " + cards[i].name;
     //    Debug.Log(str);
     //}
-    private static void MoveToUsed(BaffItem[] items, BaffItem item, int index)
+    private static void MoveToUsed(Item[] items, Item item, int index)
     {
         int itemIndex = Array.IndexOf(items, item);
-        BaffItem temp = items[index];
+        Item temp = items[index];
         items[index] = item;
         items[itemIndex] = temp;
     }
     public static void SpawnNewBaffs()
     {
-        BaffItem[] randomItems = new BaffItem[3];
+        Item[] randomItems = new Item[3];
         if (pityPoints >= 0)
             randomItems = GetRandomBaffs();
         else
@@ -139,9 +143,9 @@ public class BaffManager : MonoBehaviour
             randomItems[i] = GetRandomCard(debaffs, debaffUsedCount, i);
         return randomItems;
     }
-    private static BaffItem[] GetRandomBaffs()
+    private static Item[] GetRandomBaffs()
     {
-        BaffItem[] randomItems = new BaffItem[cardsCount];
+        Item[] randomItems = new Item[cardsCount];
         int randomNum = 0; 
         byte usualCount = 0;
         byte rareCount = 0;
@@ -169,11 +173,11 @@ public class BaffManager : MonoBehaviour
         return randomItems;
     }
 
-    private static void UpdateCard(BaffItem item, GameObject card)
+    private static void UpdateCard(Item item, GameObject card)
     {
         if (item == null)
             return;
-        card.GetComponent<BaffCard>().baffItem = item;
+        card.GetComponent<BaffCard>().item = item;
         card.GetComponent<Image>().sprite = cardBackground[(int)item.rarity];
         for (int i = 0; i < card.transform.childCount; i++)
         {
@@ -186,9 +190,9 @@ public class BaffManager : MonoBehaviour
         }
 
     }
-    private static void ShuffleCards(BaffItem[] cards, int index = 0)
+    private static void ShuffleCards<T>(T[] cards, int index = 0)
     {
-        BaffItem temp;
+        T temp;
         int random;
         for (int j = 0; j < 4; j++)
             for (int i = index; i < cards.Length; i++)
@@ -199,14 +203,15 @@ public class BaffManager : MonoBehaviour
                 cards[i] = temp;
             }
     }
-    private static BaffItem GetRandomCard(BaffItem[] cards, byte countDropped, byte index)//может попасться два подряд одинаковых
-    {
-        BaffItem item = cards[countDropped + index];
+    private static T GetRandomCard<T>(T[] cards, byte countDropped, byte index)//может попасться два подряд одинаковых
+    { 
         if (countDropped + index+1 > cards.Length)
         {
             countDropped = 0;
             ShuffleCards(cards, index);
         }
+        T item = cards[countDropped + index];
+       
         return item;
     }
 }

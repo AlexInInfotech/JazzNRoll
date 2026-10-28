@@ -9,10 +9,19 @@ public class DiceManager : MonoBehaviour
     [SerializeField] private float maxTorqueForce = 20f;
     public static int diceCount;
     public static int remainingRolls { get; private set; } = 0;
-    int _stoppedDiceCount;
 
-    private Dice[] dice;
+    private int _stoppedDiceCount;
+    private static Dice[] dice;
     private Vector3[] startPositions;
+    static byte unchangedIndex = 0;
+    public static void ChangeDice(DiceInfo diceInfo)
+    {
+        dice[unchangedIndex].valueOnFaces = diceInfo.valueOnFaces;
+        dice[unchangedIndex].transform.GetComponent<MeshRenderer>().material = diceInfo.material;
+        unchangedIndex++;
+        if (unchangedIndex >= diceCount)
+            unchangedIndex = 0;
+    }
     public static void AddRolls(int value)
     {
         ChangeAvailableRolls(remainingRolls + value);

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838b2dd0e0bbdfe429b36665f5c56a68, type: 3}
+  m_Name: Mafia
+  m_EditorClassIdentifier: Assembly-CSharp::DiceItem
+  icon: {fileID: -1666142162, guid: 163bd145d4371ac4896c390ac4beabc1, type: 3}
+  title: vsd
+  description: sdv
+  rarity: 0
+  dice: {fileID: 11400000, guid: 5b2b003227b3c6f4ab630f310ea34281, type: 2}
