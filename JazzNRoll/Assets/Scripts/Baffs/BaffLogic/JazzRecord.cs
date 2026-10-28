@@ -5,6 +5,10 @@ public class JazzRecord : Baff
 {
     [SerializeField] int extraRolls;
     bool IsActivated = false;
+    public override void Start()
+    {
+        ModifyGame();
+    }
     public override void ModifyGame()
     {
         if (IsActivated && !RoundManager.IsLastRound())

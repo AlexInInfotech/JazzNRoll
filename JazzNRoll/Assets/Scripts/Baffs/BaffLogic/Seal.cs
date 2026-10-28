@@ -9,7 +9,8 @@ public class Seal : Baff
     public override void ModifyGame()
     {
         if(PointsManager.CountNumInDropped(conditionNum) >= countNum)
-            PointsManager.AddToScore(additivePoints);
+            //PointsManager.AddToScore(additivePoints);
+            BaffVisualization.ShowPointsByBaff(this.name, additivePoints);
 
     }
 }

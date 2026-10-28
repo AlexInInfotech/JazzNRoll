@@ -1,34 +1,17 @@
 ﻿using UnityEngine;
 [CreateAssetMenu(fileName = "CubanCigarette", menuName = "Baffs/CubanCigarette")]
-public class CubanCigarette : Baff
+public class CubanCigarette : BaffByChance
 {
-    [SerializeField] int workChance;
-    [SerializeField] int additiveKoeff;
-    int lastScore;
-    bool active =false;
-    public override void Start()
-    {
-        lastScore = PointsManager.totalGainedPoints;
-    }
-    public override void ModifyGame()
-    {
-        if (PointsManager.totalGainedPoints == lastScore)//начало броска
-            if (Random.Range(0, 100) < workChance)
-            {
-                Debug.Log("CubanCigarette Baff");
-                PointsManager.AddToComboModifiers(additiveKoeff);
-                active = true;
-            }
-        if (PointsManager.totalGainedPoints != lastScore)//после броска
-        {
-            lastScore = PointsManager.totalGainedPoints;
-            if (active)
-            {
-                Debug.Log("CubanCigarette ddeBaff");
-                PointsManager.AddToComboModifiers(-additiveKoeff);
-                active = false;
-            }
-        }
+    [SerializeField] float additiveKoeff;
 
+    protected override void Activated()
+    {
+        Debug.Log("CubanCigarette Baff");
+        PointsManager.AddToComboModifiers(additiveKoeff);
+    }
+    protected override void Deactivated()
+    {
+        Debug.Log("CubanCigarette ddeBaff");
+        PointsManager.AddToComboModifiers(-additiveKoeff);
     }
 }

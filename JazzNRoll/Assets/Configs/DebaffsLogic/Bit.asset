@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 112541c96e5615f419ec860b74f5f00a, type: 3}
+  m_Name: Bit
+  m_EditorClassIdentifier: Assembly-CSharp::Rope
+  newChance: 3
+  newAdditiveChance: 3
+  baffByChances:
+  - {fileID: 11400000, guid: 6f56d3ccc65e91a4fa3cc441949f8e6c, type: 2}
+  - {fileID: 11400000, guid: a5bb6d2e59650d84997a891705c311b5, type: 2}

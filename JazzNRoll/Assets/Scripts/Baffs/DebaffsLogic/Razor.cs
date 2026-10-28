@@ -4,7 +4,7 @@ using UnityEngine;
 public class Razor : Baff
 {
     [SerializeField] int deltaScore;
-    [SerializeField] int deductedKoeff;
+    [SerializeField] float deductedKoeff;
     int lastScore;
     public override void Start()
     {

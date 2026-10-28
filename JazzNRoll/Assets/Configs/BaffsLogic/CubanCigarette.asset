@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: CubanCigarette
   m_EditorClassIdentifier: Assembly-CSharp::CubanCigarette
   workChance: 100
-  extraKoeff: 1
+  additiveChance: 0
+  additiveKoeff: 30

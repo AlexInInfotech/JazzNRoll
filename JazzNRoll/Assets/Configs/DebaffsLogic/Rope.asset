@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 112541c96e5615f419ec860b74f5f00a, type: 3}
+  m_Name: Rope
+  m_EditorClassIdentifier: Assembly-CSharp::Rope
+  newChance: 1
+  newAdditiveChance: 2
+  baffByChances:
+  - {fileID: 11400000, guid: c5c0b0876e084c44daef785c8dac22c4, type: 2}
+  - {fileID: 11400000, guid: 9200c3c6b79ab53418f933be026e0fe9, type: 2}
+  - {fileID: 11400000, guid: 734c74ecf026aa4499a1c9a3815421b8, type: 2}

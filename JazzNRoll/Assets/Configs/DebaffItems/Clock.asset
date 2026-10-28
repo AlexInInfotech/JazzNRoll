@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212aee1d896a7bc49b2cd2ce42ff6513, type: 3}
   m_Name: Clock
   m_EditorClassIdentifier: Assembly-CSharp::BaffItem
-  baff: {fileID: 11400000, guid: fc9eda50f89934c4c998997f7d74f103, type: 2}
+  baff: {fileID: 11400000, guid: 84dc7a8554d404b449c0bfc94664d834, type: 2}
   icon: {fileID: 21300000, guid: 92ecfd455954b1c4d815a502b3346fe4, type: 3}
-  title: 
-  description: Clock
+  title: "\u0421\u043B\u043E\u043C\u0430\u043D\u043D\u044B\u0435 \u0447\u0430\u0441\u044B"
+  description: "\u0437\u0430 \u043A\u0430\u0436\u0434\u044B\u0435 1200 \u043E\u0447\u043A\u043E\u0432
+    \u0431\u0440\u043E\u0441\u043A\u043E\u0432 -1"
   rarity: 3

@@ -1,34 +1,17 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Hat", menuName = "Baffs/Hat")]
-public class Hat : Baff
+public class Hat : BaffByChance
 {
-    [SerializeField] int workChance;
     [SerializeField] float resultKoef;
-    int lastScore;
-    bool active = false;
-    public override void Start()
+    protected override void Activated()
     {
-        lastScore = PointsManager.totalGainedPoints;
+        Debug.Log("Hat Baff activated");
     }
-    public override void ModifyGame()
+    protected override void Deactivated()
     {
-        if (PointsManager.totalGainedPoints == lastScore)//начало броска
-            if (Random.Range(0, 100) < workChance)
-            {
-                Debug.Log("Hat Baff activated");//как нибудь показать что бафф активировался
-                active = true;
-            }
-        if (PointsManager.totalGainedPoints != lastScore)//после броска
-        {
-            if (active)
-            {
-                Debug.Log("Hat Baff " + (PointsManager.totalGainedPoints - lastScore).ToString());
-                PointsManager.AddToScore((int)((PointsManager.totalGainedPoints - lastScore) * (resultKoef - 1)));//как нибудь показать что это очки от баффа
-                active = false;
-            }
-            lastScore = PointsManager.totalGainedPoints;
-        }
-
+        Debug.Log("Hat Baff " + (PointsManager.totalGainedPoints - lastScore).ToString());
+        //PointsManager.AddToScore((int)((PointsManager.totalGainedPoints - lastScore) * (resultKoef - 1)));//как нибудь показать что это очки от баффа
+        BaffVisualization.ShowPointsByBaff(this.name, (int)((PointsManager.totalGainedPoints - lastScore) * (resultKoef - 1)));
     }
 }

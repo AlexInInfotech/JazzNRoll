@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212aee1d896a7bc49b2cd2ce42ff6513, type: 3}
   m_Name: Bit
   m_EditorClassIdentifier: Assembly-CSharp::BaffItem
-  baff: {fileID: 11400000, guid: fc9eda50f89934c4c998997f7d74f103, type: 2}
+  baff: {fileID: 11400000, guid: 6aba3caf70c080b4092075c5e2e8425f, type: 2}
   icon: {fileID: 21300000, guid: b955a54526a58c04191b31deb60f57d7, type: 3}
-  title: 
-  description: Bit
+  title: "\u041E\u043A\u0440\u043E\u0432\u0430\u0432\u043B\u0435\u043D\u043D\u0430\u044F
+    \u0431\u0438\u0442\u0430"
+  description: "\u043E\u0432\u044B\u0448\u0430\u0435\u0442 \u043D\u0430\u0441\u0442\u043E\u044F\u0449\u0438\u0439
+    \u0448\u0430\u043D\u0441 \u0441\u0440\u0430\u0431\u0430\u0442\u044B\u0432\u0430\u043D\u0438\u044F
+    \u0432\u0441\u0435\u0445 \u0434\u0435\u0431\u0430\u0444\u0444\u043E\u0432 \u0434\u043E
+    X "
   rarity: 3

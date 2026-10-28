@@ -19,11 +19,45 @@ public class BaffManager : MonoBehaviour
     static int legendaryChance = 10;
     static byte cardsCount;
     public static int pityPoints { get; private set; } = 0;
-    public const int maxPity = 6;
+    public const int maxPity = 5;
     static byte usualUsedCount = 0;
     static byte rareUsedCount = 0;
     static byte legendaryUsedCount = 0;
     static byte debaffUsedCount = 0;
+    const string TITLE = "title";
+    const string DESCRIPTION = "description";
+    void Start()
+    {
+        cardBackground = _cardBackground;
+        int countUsual = 0;
+        int countRare = 0;
+        int countLegendary = 0;
+        int countDebaff = 0;
+        for (int i = 0; i < _items.Length; i++)
+            if (_items[i].rarity == Rarity.usual) countUsual++;
+            else if (_items[i].rarity == Rarity.rare) countRare++;
+            else if (_items[i].rarity == Rarity.legendary) countLegendary++;
+            else countDebaff++;
+        usualItems = new BaffItem[countUsual];
+        rareItems = new BaffItem[countRare];
+        legendaryItems = new BaffItem[countLegendary];
+        debaffs = new BaffItem[countDebaff];
+        foreach (BaffItem item in _items)
+            if (item.rarity == Rarity.usual) usualItems[--countUsual] = item;
+            else if (item.rarity == Rarity.rare) rareItems[--countRare] = item;
+            else if (item.rarity == Rarity.legendary) legendaryItems[--countLegendary] = item;
+            else debaffs[--countDebaff] = item;
+        ShuffleCards(usualItems);
+        ShuffleCards(rareItems);
+        ShuffleCards(legendaryItems);
+        ShuffleCards(debaffs);
+        cardsCount = (byte)transform.childCount;
+        cards = new GameObject[cardsCount];
+        for (int i = 0; i < cardsCount; i++)
+            cards[i] = transform.GetChild(i).gameObject;
+        SpawnNewBaffs();
+    }
+
     public static void ActivateBaffs() {
         foreach (Baff baff in baffs)
             baff.ModifyGame();
@@ -134,37 +168,6 @@ public class BaffManager : MonoBehaviour
         }
         return randomItems;
     }
-    void Start()
-    {
-        cardBackground = _cardBackground;
-        int countUsual = 0;
-        int countRare = 0;
-        int countLegendary = 0;
-        int countDebaff = 0;
-        for (int i =0; i < _items.Length; i++)
-            if (_items[i].rarity == Rarity.usual)  countUsual++;
-            else if (_items[i].rarity == Rarity.rare) countRare++;
-            else if (_items[i].rarity == Rarity.legendary) countLegendary++;
-            else countDebaff++;
-        usualItems = new BaffItem[countUsual];
-        rareItems = new BaffItem[countRare];
-        legendaryItems = new BaffItem[countLegendary];
-        debaffs = new BaffItem[countDebaff];
-        foreach (BaffItem item in _items)
-            if (item.rarity == Rarity.usual) usualItems[--countUsual] = item;
-            else if (item.rarity == Rarity.rare) rareItems[--countRare] = item;
-            else if (item.rarity == Rarity.legendary) legendaryItems[--countLegendary] = item;
-            else debaffs[--countDebaff] = item;
-        ShuffleCards(usualItems);
-        ShuffleCards(rareItems);
-        ShuffleCards(legendaryItems);
-        ShuffleCards(debaffs);
-        cardsCount = (byte)transform.childCount;
-        cards = new GameObject[cardsCount];
-        for (int i = 0; i < cardsCount; i++)
-            cards[i] = transform.GetChild(i).gameObject;
-        SpawnNewBaffs();
-    }
 
     private static void UpdateCard(BaffItem item, GameObject card)
     {
@@ -174,8 +177,10 @@ public class BaffManager : MonoBehaviour
         card.GetComponent<Image>().sprite = cardBackground[(int)item.rarity];
         for (int i = 0; i < card.transform.childCount; i++)
         {
-            if (card.transform.GetChild(i).TryGetComponent<TextMeshProUGUI>(out TextMeshProUGUI description))
-                description.text = item.description;
+            if (card.transform.GetChild(i).name == TITLE)
+                card.transform.GetChild(i).GetComponent<TextMeshProUGUI>().text = item.title;
+            if (card.transform.GetChild(i).name == DESCRIPTION)
+                card.transform.GetChild(i).GetComponent<TextMeshProUGUI>().text = item.description;
             if (card.transform.GetChild(i).TryGetComponent<Image>(out Image image))
                 image.sprite = item.icon;
         }

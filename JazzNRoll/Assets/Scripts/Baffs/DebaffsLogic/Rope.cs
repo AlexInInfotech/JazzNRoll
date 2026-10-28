@@ -1,12 +1,16 @@
 using UnityEngine;
-[CreateAssetMenu(fileName = "Rope", menuName = "Debaffs/Rope")]
+[CreateAssetMenu(fileName = "RopeOrBit", menuName = "Debaffs/RopeOrBit")]
 public class Rope : Baff
 {
     [SerializeField] int newChance;
     [SerializeField] int newAdditiveChance;
-    int lastScore;
+    [SerializeField] BaffByChance[] baffByChances;
     public override void Start()
     {
-        lastScore = PointsManager.totalGainedPoints;
+        foreach (BaffByChance baff in baffByChances)
+        {
+            baff.workChance = newChance;
+            baff.additiveChance = newAdditiveChance;
+        }
     }
 }

@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212aee1d896a7bc49b2cd2ce42ff6513, type: 3}
   m_Name: Mirror
   m_EditorClassIdentifier: Assembly-CSharp::BaffItem
-  baff: {fileID: 11400000, guid: fc9eda50f89934c4c998997f7d74f103, type: 2}
+  baff: {fileID: 11400000, guid: 73028f2774a2df444b38c604f17e755a, type: 2}
   icon: {fileID: 21300000, guid: eb99bdccecd305a49be575952278a288, type: 3}
-  title: 
-  description: Mirror
+  title: "\u041E\u0441\u043A\u043E\u043B\u043E\u043A \u0437\u0435\u0440\u043A\u0430\u043B\u0430"
+  description: "\u041A\u043E\u044D\u0444\u0444\u0438\u0446\u0438\u0435\u043D\u0442
+    \u043F\u0430\u0440\u044B, \u0434\u0432\u0435 \u043F\u0430\u0440\u044B \u0438
+    \u0441\u0442\u0440\u0438\u0442 \u043F\u043E\u043D\u0438\u0436\u0430\u0435\u0442\u0441\u044F
+    \u043D\u0430 \u0425"
   rarity: 3

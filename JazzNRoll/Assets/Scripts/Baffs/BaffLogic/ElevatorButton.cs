@@ -13,6 +13,8 @@ public class ElevatorButton : Baff
     {
         if (PointsManager.totalGainedPoints == lastScore)
             return;
-        PointsManager.AddToScore(additivePoints);
+        //PointsManager.AddToScore(additivePoints);
+        BaffVisualization.ShowPointsByBaff(this.name, additivePoints);
+        lastScore = PointsManager.totalGainedPoints;
     }
 }
