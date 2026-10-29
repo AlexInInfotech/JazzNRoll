@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb042ad9d516e8342b935b5e5e82e3a7, type: 3}
-  m_Name: Poker
-  m_EditorClassIdentifier: Assembly-CSharp::Poker
-  deltaScore: 100
-  extraPoints: 30
+  m_Script: {fileID: 11500000, guid: a9150f7e1ca145444b003df8e0f0a0e1, type: 3}
+  m_Name: Luck
+  m_EditorClassIdentifier: Assembly-CSharp::DiceInfo
+  valueOnFaces: 060604060502
+  material: {fileID: -876546973899608171, guid: 421b2a6ee3e03fa47a009559036b66aa, type: 3}

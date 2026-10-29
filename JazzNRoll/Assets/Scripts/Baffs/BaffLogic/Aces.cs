@@ -10,6 +10,7 @@ public class Aces : Baff
     int lastScore;
     public override void Start()
     {
+        gainedConditionPoints = 0;
         lastScore = PointsManager.totalGainedPoints;
     }
     public override void ModifyGame()
@@ -25,7 +26,8 @@ public class Aces : Baff
         if (gainedConditionPoints >= deltaScore)
         {
             Debug.Log("Aces");
-            DiceManager.AddRolls(extraRolls);
+            //DiceManager.AddRolls(extraRolls);
+            BaffVisualization.AddRollsByBaff(this.name, extraRolls);
             gainedConditionPoints = 0;
         }
         lastScore = PointsManager.totalGainedPoints;

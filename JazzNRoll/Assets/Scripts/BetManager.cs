@@ -8,7 +8,7 @@ public class BetManager : MonoBehaviour
     public void GetBet(Bet bet)
     {
         PointsManager.AddToScore(-bet.cost);
-        DiceManager.ChangeAvailableRolls(bet.rollsCount);
+        DiceManager.AddRolls(bet.rollsCount);
         BaffManager.AddToPity(bet.pityPoints);
         UIManager.BetMade();
         CameraAnimationController.BetMade();

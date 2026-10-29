@@ -63,10 +63,15 @@ public class Dice : MonoBehaviour
             -transform.forward,     //  грань 5
             -transform.up    //  грань 6
         };
+        float max = -10;
+        byte maxIndex = 0;
         for (byte i = 0; i < localDirections.Length; i++)
-            if (Vector3.Dot(localDirections[i], Vector3.up) > 1 - fault)
-                return valueOnFaces[i];
-        return 0;
+            if (Vector3.Dot(localDirections[i], Vector3.up) > max)
+            {
+                max = Vector3.Dot(localDirections[i], Vector3.up);
+                maxIndex = i;
+            }
+        return valueOnFaces[maxIndex];
     }
 
 

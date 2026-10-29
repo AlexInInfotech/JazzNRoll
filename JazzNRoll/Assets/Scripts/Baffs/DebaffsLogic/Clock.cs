@@ -16,6 +16,8 @@ public class Clock : Baff
             return;
         Debug.Log("Razor");
         lastScore = PointsManager.totalGainedPoints;
-        DiceManager.AddRolls(-1);
+
+        BaffVisualization.AddRollsByBaff(this.name, -1);
+
     }
 }

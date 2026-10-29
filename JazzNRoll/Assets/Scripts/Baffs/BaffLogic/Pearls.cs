@@ -9,13 +9,16 @@ public class Pearls : Baff
     int lastScore;
     public override void Start()
     {
+        gainedConditionPoints = 0;
         lastScore = PointsManager.totalGainedPoints;
     }
     public override void ModifyGame()
     {
         if (PointsManager.totalGainedPoints == lastScore)
             return;
-        PointsManager.AddToScore((int)(gainedConditionPoints* koef));
+        if(gainedConditionPoints != 0)
+            BaffVisualization.ShowPointsByBaff(this.name, (int)(gainedConditionPoints * koef));
+        //PointsManager.AddToScore((int)(gainedConditionPoints* koef));
         if (IsComboDropped())
             gainedConditionPoints += PointsManager.totalGainedPoints - lastScore;
         lastScore = PointsManager.totalGainedPoints;

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 838b2dd0e0bbdfe429b36665f5c56a68, type: 3}
   m_Name: Mafia
   m_EditorClassIdentifier: Assembly-CSharp::DiceItem
-  icon: {fileID: -1666142162, guid: 163bd145d4371ac4896c390ac4beabc1, type: 3}
-  title: vsd
+  icon: {fileID: 21300000, guid: 31bde3a460fee6241ab42157ae50c7c7, type: 3}
+  title: Mafia
   description: sdv
-  rarity: 0
+  rarity: 2
   dice: {fileID: 11400000, guid: 5b2b003227b3c6f4ab630f310ea34281, type: 2}

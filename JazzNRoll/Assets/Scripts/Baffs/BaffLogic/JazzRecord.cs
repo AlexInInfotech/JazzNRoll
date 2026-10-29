@@ -16,7 +16,9 @@ public class JazzRecord : Baff
         if (!IsActivated && RoundManager.IsLastRound() && DiceManager.remainingRolls == 0 && DutyManager.GetCurrentDuty() >= PointsManager.GetScore())
         {
             Debug.Log("JAZZ");
-            DiceManager.AddRolls(extraRolls);
+            //DiceManager.AddRolls(extraRolls);
+
+            BaffVisualization.AddRollsByBaff(this.name, extraRolls);
             IsActivated = true;
         }
     }

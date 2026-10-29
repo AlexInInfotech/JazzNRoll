@@ -6,6 +6,8 @@ public class BlackLiquid : BaffByChance
     protected override void Activated()
     {
         Debug.Log("BlackLiquid");
-        PointsManager.AddToScore(-PointsManager.GetScore());
+        //PointsManager.AddToScore(-PointsManager.GetScore());
+        BaffVisualization.ShowPointsByBaff(this.name, -PointsManager.GetScore());
+
     }
 }

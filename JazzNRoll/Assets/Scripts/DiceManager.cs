@@ -22,21 +22,26 @@ public class DiceManager : MonoBehaviour
         if (unchangedIndex >= diceCount)
             unchangedIndex = 0;
     }
+    public static void AddRollsWithoutShow(int value)
+    {
+        remainingRolls += value;
+    }
+    public static void ShowRolls()
+    {
+
+         UIManager.PrintRemainingRolls(remainingRolls.ToString());
+    }
     public static void AddRolls(int value)
     {
-        ChangeAvailableRolls(remainingRolls + value);
-    }
-    public static void ChangeAvailableRolls(int value)
-    {
-        remainingRolls = value;
-        UIManager.PrintRemainingRolls(value.ToString());
+        remainingRolls += value;
+        UIManager.PrintRemainingRolls(remainingRolls.ToString());
     }
     public void DiceRoll()
     {
         if (_stoppedDiceCount < diceCount || remainingRolls <= 0)
             return;
         _stoppedDiceCount = 0;
-        ChangeAvailableRolls(remainingRolls - 1);
+        AddRolls( -1 );
         PointsManager.ClearPreviousResult();
         ResultsVisualization.ClearResults();
         BaffManager.ActivateBaffs();

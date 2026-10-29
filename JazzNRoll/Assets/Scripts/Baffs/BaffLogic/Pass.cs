@@ -13,7 +13,9 @@ public class Pass : Baff
                 comboCounter++;
         if (comboCounter >= deltaCombo)
         {
-            DiceManager.AddRolls(extraRolls);
+            //DiceManager.AddRolls(extraRolls);
+
+            BaffVisualization.AddRollsByBaff(this.name, extraRolls);
             comboCounter = 0;
         }
 
