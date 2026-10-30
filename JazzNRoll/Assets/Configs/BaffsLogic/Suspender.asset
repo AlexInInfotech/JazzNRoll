@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa951575bb015814cbf924958647242d, type: 3}
   m_Name: Suspender
   m_EditorClassIdentifier: Assembly-CSharp::Suspender
-  conditionNumbers: 020405
-  additiveProcent: 10
+  conditionNumbers: 020406
+  additiveProcent: 15

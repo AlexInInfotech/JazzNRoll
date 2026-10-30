@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212aee1d896a7bc49b2cd2ce42ff6513, type: 3}
   m_Name: Hat
   m_EditorClassIdentifier: Assembly-CSharp::BaffItem
-  baff: {fileID: 11400000, guid: c5c0b0876e084c44daef785c8dac22c4, type: 2}
   icon: {fileID: 21300000, guid: e1b026aeca3e00842838bd20817f2f6d, type: 3}
   title: "\u0428\u043B\u044F\u043F\u0430"
-  description: "\u0441 2% \u0448\u0430\u043D\u0441\u043E\u043C \u0423\u043C\u043D\u043E\u0436\u0430\u0435\u0442
+  description: "\u0441 10% \u0448\u0430\u043D\u0441\u043E\u043C \u0423\u043C\u043D\u043E\u0436\u0430\u0435\u0442
     \u0432\u044B\u043F\u0430\u0432\u0448\u0435\u0435 \u0432 \u044D\u0442\u043E\u043C
     \u0431\u0440\u043E\u0441\u043A\u0435 \u0447\u0438\u0441\u043B\u043E \u043E\u0447\u043A\u043E\u0432
-    \u043D\u0430 2 "
+    \u043D\u0430 3 "
   rarity: 0
+  baff: {fileID: 11400000, guid: c5c0b0876e084c44daef785c8dac22c4, type: 2}

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ca2b9bcc0ef2ce419e4e7c2dc5eca40, type: 3}
   m_Name: CubanCigarette
   m_EditorClassIdentifier: Assembly-CSharp::CubanCigarette
-  workChance: 100
-  additiveChance: 0
-  additiveKoeff: 30
+  workChance: 5
+  additiveChance: 10
+  frequencyIncreaseChance: 2
+  additiveKoeff: 3.5

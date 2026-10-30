@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Weird
   m_EditorClassIdentifier: Assembly-CSharp::DiceItem
   icon: {fileID: 21300000, guid: 7e087822713793447b347c54a6896a56, type: 3}
-  title: Veird
+  title: "\u0421\u0442\u0440\u0430\u043D\u043D\u043E\u0441\u0442\u044C"
   description: 
   rarity: 0
   dice: {fileID: 11400000, guid: 0d3f73d5b0079744ca0d17c649b4e31a, type: 2}

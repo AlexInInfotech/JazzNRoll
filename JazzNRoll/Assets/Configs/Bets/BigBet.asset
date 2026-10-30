@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d8ef9169b99477498386a5fa3f662ae, type: 3}
   m_Name: BigBet
   m_EditorClassIdentifier: Assembly-CSharp::Bet
-  cost: 100
-  rollsCount: 4
-  pityPoints: -1
+  cost: 70
+  rollsCount: 5
+  pityPoints: -2

@@ -3,7 +3,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using NUnit.Framework.Constraints;
 
 public class BaffVisualization : MonoBehaviour
 {
@@ -21,6 +20,7 @@ public class BaffVisualization : MonoBehaviour
     static Transform iconsContainer;
     static MonoBehaviour couroutiner;
     const float duration = 1.5f;
+    const string POINTSTEXT = "PointsByBaff";
     void Start()
     {
         score = _score;
@@ -41,7 +41,7 @@ public class BaffVisualization : MonoBehaviour
         while (baffIcons[i].baffName != baffName)
             i++;
         DiceManager.AddRollsWithoutShow(value);
-        Transform pointsText = baffIcons[i].gameObject.transform.GetChild(1);
+        Transform pointsText = baffIcons[i].gameObject.transform.Find(POINTSTEXT);
         string s = value >= 0 ? "+" : "";
         pointsText.GetComponent<TextMeshProUGUI>().text = s + value.ToString();
         pointsText.gameObject.SetActive(true);
@@ -53,7 +53,7 @@ public class BaffVisualization : MonoBehaviour
         byte i = 0;
         while (baffIcons[i].baffName != baffName)
             i++;
-        Transform pointsText = baffIcons[i].gameObject.transform.GetChild(1);
+        Transform pointsText = baffIcons[i].gameObject.transform.Find(POINTSTEXT);
         string s = value >= 0 ? "+" : "";
         pointsText.GetComponent<TextMeshProUGUI>().text = s + value.ToString();
         pointsText.gameObject.SetActive(true);

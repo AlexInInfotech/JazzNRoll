@@ -1,7 +1,5 @@
 ﻿using TMPro;
-using UnityEditor.Search;
 using UnityEngine;
-using UnityEngine.Diagnostics;
 
 public class DutyManager : MonoBehaviour
 {
@@ -25,12 +23,19 @@ public class DutyManager : MonoBehaviour
         {
             PointsManager.AddToScore(-duties[dutyIndex]);
             dutyIndex++;
-            ShowCurrentDuty();
-            UIManager.StartTurn();
+            if (dutyIndex < duties.Length)
+            {
+
+                ShowCurrentDuty();
+                UIManager.StartTurn();
+            }
+            else
+                GameEndManager.EndGame(true);
+
         }
         else
         {
-            Debug.Log("LOSe");
+            GameEndManager.EndGame(false);
         }
     }
     void Start()

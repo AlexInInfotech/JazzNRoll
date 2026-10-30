@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: WhitePowder
   m_EditorClassIdentifier: Assembly-CSharp::WhitePowder
   combos: 010000000200000007000000
-  additiveKoef: 1
+  additiveKoef: 1.7

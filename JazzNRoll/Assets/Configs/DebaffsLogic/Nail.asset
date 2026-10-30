@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Nail
   m_EditorClassIdentifier: Assembly-CSharp::Nail
   workChance: 1
-  additiveChance: 3
-  deductedKoef: -0.61
+  additiveChance: 4
+  frequencyIncreaseChance: 3
+  deductedKoef: -0.2

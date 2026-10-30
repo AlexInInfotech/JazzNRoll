@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f1c76b6525f8114699930c5e14aca31, type: 3}
   m_Name: Hat
   m_EditorClassIdentifier: Assembly-CSharp::Hat
-  workChance: 100
-  resultKoef: 2
+  workChance: 10
+  additiveChance: 5
+  frequencyIncreaseChance: 2
+  resultKoef: 3

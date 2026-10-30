@@ -45,7 +45,7 @@ public class Dice : MonoBehaviour
     {
         float movingForce = UnityEngine.Random.Range(_minForce, _maxForce);
         float torqueForce = UnityEngine.Random.Range(_minTorqueFroce, _maxTorqueFroce);
-        Vector3 forceAxis = new Vector3(0, UnityEngine.Random.Range(0.5f, 1.2f), UnityEngine.Random.Range(0.1f, 1f)) + baseVector;
+        Vector3 forceAxis = new Vector3(0, UnityEngine.Random.Range(0.5f, 1.2f), UnityEngine.Random.Range(0.1f, 0.6f)) + baseVector;
         Vector3 rotationAxis = UnityEngine.Random.rotation.eulerAngles;
         rb.AddTorque(rotationAxis * torqueForce, ForceMode.Impulse);
         rb.AddForce(forceAxis * movingForce, ForceMode.Impulse);

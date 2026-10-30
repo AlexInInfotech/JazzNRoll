@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5a1cd09d49afd46a051e36d4f8a835, type: 3}
   m_Name: BowTie
   m_EditorClassIdentifier: Assembly-CSharp::BowTie
-  workChance: 10
-  additivePoints: 100
+  workChance: 3
+  additiveChance: 7
+  frequencyIncreaseChance: 2
+  additivePoints: 267

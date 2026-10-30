@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89a297e2c9a9904daf8e58c0380a60a, type: 3}
   m_Name: FeatherBoa
   m_EditorClassIdentifier: Assembly-CSharp::FeatherBoa
-  extraPity: 3
+  extraPity: 5

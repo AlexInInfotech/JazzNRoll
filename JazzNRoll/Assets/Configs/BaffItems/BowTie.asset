@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212aee1d896a7bc49b2cd2ce42ff6513, type: 3}
   m_Name: BowTie
   m_EditorClassIdentifier: Assembly-CSharp::BaffItem
-  baff: {fileID: 11400000, guid: 734c74ecf026aa4499a1c9a3815421b8, type: 2}
   icon: {fileID: 21300000, guid: 5ff064efcfe46b140ae6d326bd8261e4, type: 3}
   title: "\u0411\u0430\u0431\u043E\u0447\u043A\u0430"
-  description: "3% \u0448\u0430\u043D\u0441\u0430 \u0447\u0442\u043E \u0434\u0430\u0432\u0441\u0442
-    100 \u043E\u0447\u043A\u043E\u0432"
+  description: "3% \u0448\u0430\u043D\u0441\u0430 \u0447\u0442\u043E \u0434\u0430\u0441\u0442
+    267 \u043E\u0447\u043A\u043E\u0432"
   rarity: 0
+  baff: {fileID: 11400000, guid: 734c74ecf026aa4499a1c9a3815421b8, type: 2}

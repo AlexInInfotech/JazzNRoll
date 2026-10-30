@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f1c1d84ff05f44cb3f4aa80d680e1c, type: 3}
   m_Name: Aces
   m_EditorClassIdentifier: Assembly-CSharp::Aces
-  conditionNumbers: 010203
-  deltaScore: 50
+  conditionNumbers: 0106
+  deltaScore: 500
   extraRolls: 1

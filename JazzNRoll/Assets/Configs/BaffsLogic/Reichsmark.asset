@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Reichsmark
   m_EditorClassIdentifier: Assembly-CSharp::Reichsmark
   combo: 03000000
-  additiveKoef: 0.6
+  additiveKoef: 1.1

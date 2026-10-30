@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d872101986a946a44b215b7894b60572, type: 3}
   m_Name: ViolinCase
   m_EditorClassIdentifier: Assembly-CSharp::ViolinCase
-  deltaScore: 150
-  additiveKoeff: 1
+  deltaScore: 250
+  additiveKoeff: 2.5

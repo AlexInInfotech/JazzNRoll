@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb042ad9d516e8342b935b5e5e82e3a7, type: 3}
   m_Name: PokerChip
   m_EditorClassIdentifier: Assembly-CSharp::Poker
-  deltaScore: 100
-  extraPoints: 30
+  deltaScore: 250
+  additivePoints: 100

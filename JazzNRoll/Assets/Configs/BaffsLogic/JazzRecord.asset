@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91363d27c61916c448f4125fff35e363, type: 3}
   m_Name: JazzRecord
   m_EditorClassIdentifier: Assembly-CSharp::JazzRecord
-  extraRolls: 3
+  extraRolls: 1

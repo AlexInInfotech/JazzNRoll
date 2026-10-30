@@ -28,13 +28,13 @@ public static class PointsManager
     public static Dictionary<ComboType, float> ComboModifiers { get; private set; } = new Dictionary<ComboType, float>
     {
         { ComboType.NoCombo, 1.00f },
-        { ComboType.Pair, 1.30f },
-        { ComboType.Set, 1.75f },
-        { ComboType.Street, 3.00f },
-        { ComboType.FourOfAKind, 3.00f },
-        { ComboType.TwoPairs, 2.25f },
-        { ComboType.Flush, 5.00f },
-        { ComboType.FullHouse, 3.25f },
+        { ComboType.Pair, 2f },
+        { ComboType.Set, 3.75f },
+        { ComboType.Street, 1.25f },
+        { ComboType.FourOfAKind, 4.5f },
+        { ComboType.TwoPairs, 3.25f },
+        { ComboType.Flush, 8.50f },
+        { ComboType.FullHouse, 4.25f },
         { ComboType.Royal, 5.00f }
     };
 

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Seal
   m_EditorClassIdentifier: Assembly-CSharp::Seal
   conditionNum: 1
-  countNum: 3
-  additivePoints: 67
+  countNum: 2
+  additivePoints: 255

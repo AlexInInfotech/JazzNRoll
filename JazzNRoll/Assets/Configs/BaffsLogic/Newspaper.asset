@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f987497e1389884e8d6b221a4ff1d6a, type: 3}
   m_Name: Newspaper
   m_EditorClassIdentifier: Assembly-CSharp::Newspaper
-  extraChance: 0
+  extraChance: 3

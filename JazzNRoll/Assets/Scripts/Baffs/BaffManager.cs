@@ -15,7 +15,7 @@ public class BaffManager : MonoBehaviour
     static GameObject[] cards;
     static Sprite[] cardBackground;
     static List<Baff> baffs = new List<Baff>();
-    static int rareChance = 40;
+    static int rareChance = 20;
     static int legendaryChance = 10;
     static byte cardsCount;
     public static int pityPoints { get; private set; } = 0;

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Pearls
   m_EditorClassIdentifier: Assembly-CSharp::Pearls
   conditionalTypes: 040000000600000007000000
-  koef: 0.3
+  koef: 0.7

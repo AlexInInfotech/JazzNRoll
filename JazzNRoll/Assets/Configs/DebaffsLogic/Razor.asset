@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Razor
   m_EditorClassIdentifier: Assembly-CSharp::Razor
   deltaScore: 1000
-  deductedKoeff: 0.74
+  deductedKoeff: 0.1

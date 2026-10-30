@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212aee1d896a7bc49b2cd2ce42ff6513, type: 3}
   m_Name: Razor
   m_EditorClassIdentifier: Assembly-CSharp::BaffItem
-  baff: {fileID: 11400000, guid: b72321d58b23a3348aeaa49f996eb1a5, type: 2}
   icon: {fileID: 21300000, guid: bb5e031496d70ed4fa3efe629f62f516, type: 3}
   title: "\u0411\u0440\u0438\u0442\u0432\u0430"
   description: "\u0437\u0430 \u043A\u0430\u0436\u0434\u044B\u0435 1000 \u043E\u0447\u043A\u043E\u0432
     \u043F\u043E\u043D\u0438\u0436\u0430\u0435\u0442 \u043A\u043E\u044D\u0444\u0444\u0438\u0446\u0438\u0435\u043D\u0442\u044B
-    \u0432\u0441\u0435\u0445 \u043A\u043E\u043C\u0431\u043E \u043D\u0430 \u0425"
+    \u0432\u0441\u0435\u0445 \u043A\u043E\u043C\u0431\u043E \u043D\u0430 0.1"
   rarity: 3
+  baff: {fileID: 11400000, guid: b72321d58b23a3348aeaa49f996eb1a5, type: 2}

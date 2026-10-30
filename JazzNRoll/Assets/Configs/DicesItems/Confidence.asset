@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Confidence
   m_EditorClassIdentifier: Assembly-CSharp::DiceItem
   icon: {fileID: 21300000, guid: ee6d248f7386cba4eb25e4c92be7969b, type: 3}
-  title: Confidence
+  title: "\u0423\u0432\u0435\u0440\u0435\u043D\u043D\u043E\u0441\u0442\u044C"
   description: 
-  rarity: 1
+  rarity: 0
   dice: {fileID: 11400000, guid: fca46a5cc5d060842b26843adba4cbf6, type: 2}

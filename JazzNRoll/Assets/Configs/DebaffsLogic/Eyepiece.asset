@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Eyepiece
   m_EditorClassIdentifier: Assembly-CSharp::WhitePowder
   combos: 040000000600000007000000
-  additiveKoef: -1.05
+  additiveKoef: -0.6

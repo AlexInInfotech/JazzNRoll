@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: BlackLiquid
   m_EditorClassIdentifier: Assembly-CSharp::BlackLiquid
   workChance: 1
-  additiveChance: 2
+  additiveChance: 1
+  frequencyIncreaseChance: 3
