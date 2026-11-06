@@ -17,6 +17,7 @@ public class BaffManager : MonoBehaviour
     static List<Baff> baffs = new List<Baff>();
     static int rareChance = 20;
     static int legendaryChance = 10;
+    static int debaffChanceByPoint = 20;
     static byte cardsCount;
     public static int pityPoints { get; private set; } = 0;
     public const int maxPity = 5;
@@ -131,9 +132,15 @@ public class BaffManager : MonoBehaviour
         if (pityPoints >= 0)
             randomItems = GetRandomBaffs();
         else
-            randomItems = GetRandomDebaffs();
+        {
+            Debug.Log(-debaffChanceByPoint * pityPoints);
+            if (UnityEngine.Random.Range(1, 100) < -debaffChanceByPoint * pityPoints)
+                randomItems = GetRandomDebaffs();
+            else
+                randomItems = GetRandomBaffs();
+        }
         for (int i = 0; i < cardsCount; i++)
-            UpdateCard(randomItems[i], cards[i]);
+                UpdateCard(randomItems[i], cards[i]);
     }
     private static BaffItem[] GetRandomDebaffs()
     {

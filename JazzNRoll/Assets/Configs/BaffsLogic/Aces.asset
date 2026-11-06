@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Aces
   m_EditorClassIdentifier: Assembly-CSharp::Aces
   conditionNumbers: 0106
-  deltaScore: 500
+  deltaScore: 400
   extraRolls: 1
