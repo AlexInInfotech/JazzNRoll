@@ -440,3 +440,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4031b097ced2558498976d04dbb43baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HoverTarget
+  hiddenObject: {fileID: 2298760895471993179}
