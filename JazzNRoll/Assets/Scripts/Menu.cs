@@ -9,6 +9,10 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene(SCENENAME);
     }
+    public void SetTutorialActive(bool value)
+    {
+        Tutorial.isActive = value;
+    }
 
     public void Exit()
     {

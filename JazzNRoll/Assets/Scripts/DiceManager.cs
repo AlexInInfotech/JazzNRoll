@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class DiceManager : MonoBehaviour
 {
+    public static event Action OnAllRollsEnded; // IMBAAAAAAAAAAAAAAAAAAAA
     [SerializeField] private float minForce = 10f;
     [SerializeField] private float maxForce = 20f;
     [SerializeField] private float minTorqueForce = 10f;
@@ -78,6 +80,7 @@ public class DiceManager : MonoBehaviour
         BaffManager.SpawnNewBaffs();
         UIManager.RollsFinish();
         CameraAnimationController.FinishRoll();
+        OnAllRollsEnded?.Invoke();
     }
     private void Start()
     {
