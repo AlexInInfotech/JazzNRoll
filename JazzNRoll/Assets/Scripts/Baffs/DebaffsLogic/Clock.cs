@@ -12,9 +12,11 @@ public class Clock : Baff
     }
     public override void ModifyGame()
     {
+
+        BaffVisualization.ShowBaffScore(this.name, PointsManager.totalGainedPoints - lastScore);
         if (PointsManager.totalGainedPoints - lastScore < deltaScore)
             return;
-        Debug.Log("Razor");
+        Debug.Log("Clock");
         lastScore = PointsManager.totalGainedPoints;
 
         BaffVisualization.AddRollsByBaff(this.name, -1);

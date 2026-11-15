@@ -8,10 +8,12 @@ public class CubanCigarette : BaffByChance
     {
         Debug.Log("CubanCigarette Baff");
         PointsManager.AddToComboModifiers(additiveKoeff);
+        BaffVisualization.ShowBaffActivity(this.name, true);
     }
     protected override void Deactivated()
     {
         Debug.Log("CubanCigarette ddeBaff");
         PointsManager.AddToComboModifiers(-additiveKoeff);
+        BaffVisualization.ShowBaffActivity(this.name, false);
     }
 }

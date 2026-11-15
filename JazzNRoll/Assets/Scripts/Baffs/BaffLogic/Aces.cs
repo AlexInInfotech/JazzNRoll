@@ -20,6 +20,7 @@ public class Aces : Baff
         if (IsNumsInDropped())
         {
             gainedConditionPoints += PointsManager.totalGainedPoints - lastScore;
+            BaffVisualization.ShowBaffScore(this.name, gainedConditionPoints);
             Debug.Log("IS NUMS IN dropped");
 
         }
@@ -29,6 +30,7 @@ public class Aces : Baff
             //DiceManager.AddRolls(extraRolls);
             BaffVisualization.AddRollsByBaff(this.name, extraRolls);
             gainedConditionPoints = 0;
+            BaffVisualization.ShowBaffScore(this.name, gainedConditionPoints);
         }
         lastScore = PointsManager.totalGainedPoints;
 

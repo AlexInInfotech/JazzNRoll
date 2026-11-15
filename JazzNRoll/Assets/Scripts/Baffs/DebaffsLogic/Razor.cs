@@ -12,6 +12,8 @@ public class Razor : Baff
     }
     public override void ModifyGame()
     {
+
+        BaffVisualization.ShowBaffScore(this.name, PointsManager.totalGainedPoints - lastScore);
         if (PointsManager.totalGainedPoints - lastScore < deltaScore)
             return;
         Debug.Log("Razor");

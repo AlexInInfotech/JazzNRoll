@@ -21,6 +21,8 @@ public class BaffVisualization : MonoBehaviour
     static MonoBehaviour couroutiner;
     const float duration = 1.5f;
     const string POINTSTEXT = "PointsByBaff";
+    const string SCORETEXT = "Score";
+    const string ACTIVATION = "ActivationEmission";
     void Start()
     {
         score = _score;
@@ -33,6 +35,8 @@ public class BaffVisualization : MonoBehaviour
             baffIcons[i] = new BaffIcon();
             baffIcons[i].gameObject = transform.GetChild(i).gameObject;
             baffIcons[i].gameObject.SetActive(false);
+            baffIcons[i].gameObject.transform.Find(ACTIVATION).gameObject.SetActive(false);
+            //baffIcons[i].gameObject.transform.Find(SCORETEXT).GetComponent<TextMeshProUGUI>().text = "";
         }
     }
     public static void AddRollsByBaff(string baffName, int value)
@@ -48,12 +52,29 @@ public class BaffVisualization : MonoBehaviour
         pointsText.transform.SetParent(iconsContainer.parent);
         couroutiner.StartCoroutine(RollsAnimation(baffIcons[i].gameObject.transform, pointsText, value, pointsText.transform.position - baffIcons[i].gameObject.transform.position));
     }
-    public static void ShowPointsByBaff(string baffName, int value)
+    private static Transform GetTransformOfBaff(string baffName, string transformName)
     {
         byte i = 0;
         while (baffIcons[i].baffName != baffName)
             i++;
-        Transform pointsText = baffIcons[i].gameObject.transform.Find(POINTSTEXT);
+        return baffIcons[i].gameObject.transform.Find(transformName);
+    }
+    public static void ShowBaffActivity(string baffName, bool isActive)
+    {
+        GetTransformOfBaff(baffName, ACTIVATION).gameObject.SetActive(isActive);
+    }
+    public static void ShowBaffScore(string baffName, int value)
+    {
+        Debug.Log("VISUALIZINDGGG");
+        GetTransformOfBaff(baffName, SCORETEXT).GetComponent<TextMeshProUGUI>().text = value.ToString();
+        //scoreText.gameObject.SetActive(true);
+    }
+    public static void ShowPointsByBaff(string baffName, int value)//если слишком быстро кидть то может потеряться значение
+    {
+        byte i = 0;
+        Transform pointsText = GetTransformOfBaff(baffName, POINTSTEXT);
+        if (pointsText == null)
+            return;
         string s = value >= 0 ? "+" : "";
         pointsText.GetComponent<TextMeshProUGUI>().text = s + value.ToString();
         pointsText.gameObject.SetActive(true);

@@ -20,11 +20,14 @@ public class ViolinCase : Baff
             Debug.Log("ViolinCase DEBaff");
             Activate = false;
             PointsManager.AddToComboModifiers(-additiveKoeff);
+            BaffVisualization.ShowBaffActivity(this.name, false);
         }
+        BaffVisualization.ShowBaffScore(this.name, PointsManager.totalGainedPoints - lastScore);
         if (PointsManager.totalGainedPoints - lastScore < deltaScore)
             return;
         Debug.Log("ViolinCase Baff");
-        PointsManager.AddToComboModifiers(additiveKoeff); 
+        PointsManager.AddToComboModifiers(additiveKoeff);
+        BaffVisualization.ShowBaffActivity(this.name, true);
         lastScore = PointsManager.totalGainedPoints;
         Activate = true;
 

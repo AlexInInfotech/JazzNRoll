@@ -18,6 +18,7 @@ public class Suspender : Baff
         if (IsNumsInDropped())
         {
             gainedConditionPoints += PointsManager.totalGainedPoints - lastScore;
+            BaffVisualization.ShowBaffScore(this.name, gainedConditionPoints);
             if (gainedConditionPoints %2 == 0)
             {
                 Debug.Log("Suspender");

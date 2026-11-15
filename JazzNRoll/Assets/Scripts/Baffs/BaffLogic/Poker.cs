@@ -11,6 +11,7 @@ public class Poker : Baff
     }
     public override void ModifyGame()
     {
+        BaffVisualization.ShowBaffScore(this.name, PointsManager.totalGainedPoints - lastScore);
         if (PointsManager.totalGainedPoints - lastScore < deltaScore)
             return;
         Debug.Log("Poker");
