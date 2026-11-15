@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Weird
   m_EditorClassIdentifier: Assembly-CSharp::DiceInfo
   valueOnFaces: 060101040401
-  material: {fileID: -876546973899608171, guid: 6732ef3eb40a3ee4bacef7372f578193, type: 3}
+  material: {fileID: 2100000, guid: 5580addce4fd2bc45843faebfda0d5a3, type: 2}

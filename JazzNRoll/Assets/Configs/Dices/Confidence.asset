@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Confidence
   m_EditorClassIdentifier: Assembly-CSharp::DiceInfo
   valueOnFaces: 030303030303
-  material: {fileID: -876546973899608171, guid: 723cdc90e7c612c40a4f280eaf73c4c3, type: 3}
+  material: {fileID: 2100000, guid: a62f705ca44357e40a9b47558c749aa5, type: 2}

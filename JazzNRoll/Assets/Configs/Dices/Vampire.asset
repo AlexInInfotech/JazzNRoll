@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Vampire
   m_EditorClassIdentifier: Assembly-CSharp::DiceInfo
   valueOnFaces: 060604060402
-  material: {fileID: -876546973899608171, guid: c53b87cbbfb601c4b976cc55e044b024, type: 3}
+  material: {fileID: 2100000, guid: 0056e08a2469bfd42852e605ba55be74, type: 2}

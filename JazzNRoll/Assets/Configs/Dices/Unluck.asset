@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Unluck
   m_EditorClassIdentifier: Assembly-CSharp::DiceInfo
   valueOnFaces: 020201020101
-  material: {fileID: -876546973899608171, guid: 1c29736501b9e2c43aa807ce282696ad, type: 3}
+  material: {fileID: 2100000, guid: 154770cd2c05bd644bce4d483e7ba36f, type: 2}

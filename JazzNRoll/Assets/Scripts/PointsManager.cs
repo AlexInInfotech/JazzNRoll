@@ -85,6 +85,9 @@ public static class PointsManager
         byte pairCount = 0;
         bool hasSet = false;
         byte streetCount = 0;
+
+        byte[] comboNumbers = new byte[6];
+        byte comboIndex = 0;
         for (int i = 0; i < diceFaceCounts.Length; i++)
         {
             result += i * diceFaceCounts[i];
@@ -94,17 +97,25 @@ public static class PointsManager
                     streetCount = 0;
                     break;
                 case 2:
+                    comboNumbers[comboIndex] = (byte) i;
+                    comboIndex++;
                     pairCount++;
                     if (pairCount == 2)
                         currentCombos[0] = ComboType.TwoPairs;
                     break;
                 case 3:
+                    comboNumbers[comboIndex] = (byte)i;
+                    comboIndex++;
                     hasSet = true;
                     break;
                 case 4:
+                    comboNumbers[comboIndex] = (byte)i;
+                    comboIndex++;
                     currentCombos[0] = ComboType.FourOfAKind;
                     break;
                 case 5:
+                    comboNumbers[comboIndex] = (byte)i;
+                    comboIndex++;
                     currentCombos[0] = ComboType.Flush;
                     break;
             }
@@ -119,9 +130,27 @@ public static class PointsManager
             {
                 streetCount++;
                 if (streetCount == 3)
+                {
+                    comboNumbers[comboIndex] = (byte)(i-2);
+                    comboIndex++;
+                    comboNumbers[comboIndex] = (byte)(i - 1);
+                    comboIndex++;
+                    comboNumbers[comboIndex] = (byte)(i);
+                    comboIndex++;
                     currentCombos[1] = ComboType.Street;
+                }
                 else if (streetCount == 5)
                 {
+                    comboNumbers[comboIndex] = (byte)(i - 4);
+                    comboIndex++;
+                    comboNumbers[comboIndex] = (byte)(i - 3);
+                    comboIndex++;
+                    comboNumbers[comboIndex] = (byte)(i - 2);
+                    comboIndex++;
+                    comboNumbers[comboIndex] = (byte)(i - 1);
+                    comboIndex++;
+                    comboNumbers[comboIndex] = (byte)(i );
+                    comboIndex++;
                     currentCombos[0] = ComboType.Royal;
                     currentCombos[1] = ComboType.NoCombo;
                 }
@@ -137,7 +166,7 @@ public static class PointsManager
 
         Debug.Log(currentCombos[0] + " " + currentCombos[1]);
 
-
+        DiceManager.ShowComboDices(comboNumbers);
 
         return (int)(result* ComboModifiers.GetValueOrDefault<ComboType, float>(currentCombos[0]) * ComboModifiers.GetValueOrDefault<ComboType, float>(currentCombos[1]));
 

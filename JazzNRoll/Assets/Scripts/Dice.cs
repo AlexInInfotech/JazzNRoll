@@ -1,6 +1,7 @@
 ﻿using System; 
 using System.Collections;
 using UnityEngine;
+using static DiceManager;
 
 public class Dice : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class Dice : MonoBehaviour
     }
 
     
-    public IEnumerator DieRoll(Action<byte> callback)
+    public IEnumerator DieRoll(Action<FallenDice> callback)
     {
         Physics();
         yield return new WaitForSeconds(0.5f);
@@ -37,8 +38,8 @@ public class Dice : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-
-        callback?.Invoke(GetCurrentFace()); 
+        //FallenDice dice = new FallenDice(this.gameObject, GetCurrentFace());
+        callback?.Invoke(new FallenDice(this.gameObject, GetCurrentFace())); 
     }
 
     private void Physics()

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Luck
   m_EditorClassIdentifier: Assembly-CSharp::DiceInfo
   valueOnFaces: 060604060502
-  material: {fileID: -876546973899608171, guid: 421b2a6ee3e03fa47a009559036b66aa, type: 3}
+  material: {fileID: 2100000, guid: a6a9da162fe057f4aaaf7b4b7642f2e6, type: 2}

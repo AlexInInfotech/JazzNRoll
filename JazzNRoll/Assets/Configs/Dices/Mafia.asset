@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Mafia
   m_EditorClassIdentifier: Assembly-CSharp::DiceInfo
   valueOnFaces: 060606060601
-  material: {fileID: -876546973899608171, guid: bf2b652f8f8537f41af178406c381fd1, type: 3}
+  material: {fileID: 2100000, guid: db55e7ee7cc3b9e41bfe6f77eeeb1e52, type: 2}

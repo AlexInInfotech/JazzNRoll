@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Chicago
   m_EditorClassIdentifier: Assembly-CSharp::DiceInfo
   valueOnFaces: 050501030301
-  material: {fileID: -876546973899608171, guid: 49dd1709e57d2d348b84f449d013618c, type: 3}
+  material: {fileID: 2100000, guid: ffef30e5011f18d4780b41efbd1c5c3d, type: 2}
