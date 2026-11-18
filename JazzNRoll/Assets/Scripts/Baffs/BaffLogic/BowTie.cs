@@ -10,7 +10,7 @@ public class BowTie : BaffByChance
     {
         Debug.Log("BowTie activated");//как нибудь показать что бафф активировался
         //PointsManager.AddToScore(additivePoints);
-        BaffVisualization.ShowPointsByBaff(this.name, additivePoints);
+        BaffVisualization.AddPointsByBaff(this.name, additivePoints);
 
     }
 }

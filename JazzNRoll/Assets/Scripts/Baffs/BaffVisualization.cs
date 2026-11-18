@@ -18,7 +18,6 @@ public class BaffVisualization : MonoBehaviour
     static BaffIcon[] baffIcons;
     static byte activeBaffCount = 0;
     static Transform iconsContainer;
-    static MonoBehaviour couroutiner;
     const float duration = 1.5f;
     const string POINTSTEXT = "PointsByBaff";
     const string SCORETEXT = "Score";
@@ -27,7 +26,6 @@ public class BaffVisualization : MonoBehaviour
     {
         score = _score;
         rolls = _rolls;
-        couroutiner = this;
         iconsContainer = this.transform;
         baffIcons = new BaffIcon[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
@@ -49,8 +47,11 @@ public class BaffVisualization : MonoBehaviour
         string s = value >= 0 ? "+" : "";
         pointsText.GetComponent<TextMeshProUGUI>().text = s + value.ToString();
         pointsText.gameObject.SetActive(true);
-        pointsText.transform.SetParent(iconsContainer.parent);
-        couroutiner.StartCoroutine(RollsAnimation(baffIcons[i].gameObject.transform, pointsText, value, pointsText.transform.position - baffIcons[i].gameObject.transform.position));
+
+        UIAnimations.DrawTextToPoint(pointsText, rolls, () => DiceManager.ShowRolls());
+
+        //pointsText.transform.SetParent(iconsContainer.parent);
+        //couroutiner.StartCoroutine(RollsAnimation(baffIcons[i].gameObject.transform, pointsText, value, pointsText.transform.position - baffIcons[i].gameObject.transform.position));
     }
     private static Transform GetTransformOfBaff(string baffName, string transformName)
     {
@@ -69,7 +70,7 @@ public class BaffVisualization : MonoBehaviour
         GetTransformOfBaff(baffName, SCORETEXT).GetComponent<TextMeshProUGUI>().text = value.ToString();
         //scoreText.gameObject.SetActive(true);
     }
-    public static void ShowPointsByBaff(string baffName, int value)//если слишком быстро кидть то может потеряться значение
+    public static void AddPointsByBaff(string baffName, int value)//если слишком быстро кидть то может потеряться значение
     {
         byte i = 0;
         Transform pointsText = GetTransformOfBaff(baffName, POINTSTEXT);
@@ -78,30 +79,35 @@ public class BaffVisualization : MonoBehaviour
         string s = value >= 0 ? "+" : "";
         pointsText.GetComponent<TextMeshProUGUI>().text = s + value.ToString();
         pointsText.gameObject.SetActive(true);
-        pointsText.transform.SetParent(iconsContainer.parent);
-        couroutiner.StartCoroutine(PointsAnimation(baffIcons[i].gameObject.transform, pointsText, value, pointsText.transform.position - baffIcons[i].gameObject.transform.position));
+
+
+       UIAnimations.DrawTextToPoint(pointsText, score, () => PointsManager.AddToScore(value));
+
+
+        //pointsText.transform.SetParent(iconsContainer.parent);
+        //couroutiner.StartCoroutine(PointsAnimation(baffIcons[i].gameObject.transform, pointsText, value, pointsText.transform.position - baffIcons[i].gameObject.transform.position));
     }
-    static IEnumerator RollsAnimation(Transform parent, Transform transform, int value, Vector3 offset)
-    {
-        yield return new WaitForSeconds(1f);
-        Vector3 startWorldPos = transform.position;
+    //static IEnumerator RollsAnimation(Transform parent, Transform transform, int value, Vector3 offset)
+    //{
+    //    yield return new WaitForSeconds(1f);
+    //    Vector3 startWorldPos = transform.position;
 
-        float elapsedTime = 0f;
+    //    float elapsedTime = 0f;
 
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            float percentageComplete = elapsedTime / duration;
-            float smoothPercentage = Mathf.SmoothStep(0f, 1f, percentageComplete);
-            transform.position = Vector3.Lerp(startWorldPos, rolls.position, smoothPercentage);
+    //    while (elapsedTime < duration)
+    //    {
+    //        elapsedTime += Time.deltaTime;
+    //        float percentageComplete = elapsedTime / duration;
+    //        float smoothPercentage = Mathf.SmoothStep(0f, 1f, percentageComplete);
+    //        transform.position = Vector3.Lerp(startWorldPos, rolls.position, smoothPercentage);
 
-            yield return null;
-        }
-        DiceManager.ShowRolls();
-        transform.SetParent(parent);
-        transform.position = parent.position + offset;
-        transform.gameObject.SetActive(false);
-    }
+    //        yield return null;
+    //    }
+    //    DiceManager.ShowRolls();
+    //    transform.SetParent(parent);
+    //    transform.position = parent.position + offset;
+    //    transform.gameObject.SetActive(false);
+    //}
     static IEnumerator PointsAnimation(Transform parent, Transform transform, int value, Vector3 offset)
     {
         yield return new WaitForSeconds(1f);

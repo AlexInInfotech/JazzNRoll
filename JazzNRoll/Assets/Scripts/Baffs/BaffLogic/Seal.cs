@@ -10,7 +10,7 @@ public class Seal : Baff
     {
         if(PointsManager.CountNumInDropped(conditionNum) >= countNum)
             //PointsManager.AddToScore(additivePoints);
-            BaffVisualization.ShowPointsByBaff(this.name, additivePoints);
+            BaffVisualization.AddPointsByBaff(this.name, additivePoints);
 
     }
 }

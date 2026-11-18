@@ -7,7 +7,7 @@ public class BlackLiquid : BaffByChance
     {
         Debug.Log("BlackLiquid");
         //PointsManager.AddToScore(-PointsManager.GetScore());
-        BaffVisualization.ShowPointsByBaff(this.name, -PointsManager.GetScore());
+        BaffVisualization.AddPointsByBaff(this.name, -PointsManager.GetScore());
 
     }
 }

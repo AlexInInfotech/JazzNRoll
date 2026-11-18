@@ -1,6 +1,8 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿
 using System;
+using System.Collections;
+using UnityEngine;
+using static DiceManager;
 
 public class DiceManager : MonoBehaviour
 {
@@ -20,16 +22,25 @@ public class DiceManager : MonoBehaviour
     static FallenDice[] fallenDices;
     public class FallenDice
     {
+        private static Camera camera =>  FindAnyObjectByType<Camera>();
+        public static Canvas canvas;
         public FallenDice(GameObject _diceObject, byte _value)
         {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                canvas.transform as RectTransform,       // Сетка, в которой мы ищем координаты (наш Canvas)
+                 camera.WorldToScreenPoint(_diceObject.transform.position),       // Экранный пиксель, который мы получили от камеры
+                camera,       // Камера, которая рендерит UI (нужна для Screen Space - Camera)
+                out screenPosition    // Сюда Unity запишет правильный результат (Vector2)
+            );
             diceMaterial = _diceObject.GetComponent<MeshRenderer>().material;
             value = _value;
         }
-        public FallenDice(Material _diceMaterial, byte _value)
-        {
-            diceMaterial = _diceMaterial;
-            value = _value;
-        }
+        //public FallenDice(Material _diceMaterial, byte _value)
+        //{
+        //    diceMaterial = _diceMaterial;
+        //    value = _value;
+        //}
+        public Vector2 screenPosition;
         public Material diceMaterial;
         public byte value;
     }
@@ -47,7 +58,6 @@ public class DiceManager : MonoBehaviour
     }
     public static void ShowRolls()
     {
-
          UIManager.PrintRemainingRolls(remainingRolls.ToString());
     }
     public static void AddRolls(int value)
@@ -68,7 +78,7 @@ public class DiceManager : MonoBehaviour
         for (int i = 0; i < dice.Length; i++)
         {
             dice[i].gameObject.transform.position = startPositions[i];
-            StartCoroutine(dice[i].DieRoll(fallenDice => {  fallenDices[_stoppedDiceCount] = new FallenDice(fallenDice.diceMaterial, fallenDice.value); ValueAppeared(fallenDice.value); }));
+            StartCoroutine(dice[i].DieRoll(fallenDice => {   ValueAppeared(fallenDice); }));
         }
     }
     public static void ResetComboDices()
@@ -88,10 +98,14 @@ public class DiceManager : MonoBehaviour
                 if (dice.value == comboNumbers[i])
                     dice.diceMaterial.EnableKeyword("_EMISSION");
     }
-    private void ValueAppeared(byte value)
+    private void ValueAppeared(FallenDice fallenDice)
     {
-        PointsManager.RegisterDiceRoll(value);
-        ResultsVisualization.ShowAppearedDiceValue(value);
+        fallenDices[_stoppedDiceCount] = fallenDice;
+        ResultsVisualization.ShowAppearedDiceValue(fallenDice);
+        PointsManager.RegisterDiceRoll(fallenDice.value);
+
+
+
         _stoppedDiceCount++;
         TryFinishTurn();
     }

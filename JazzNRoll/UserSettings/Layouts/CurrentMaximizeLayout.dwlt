@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 12406
+  controlID: 13711
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_SerializedViewNames:
   - UnityEditor.DeviceSimulation.SimulatorWindow
   m_SerializedViewValues:
-  - C:\Projects\JazzNRoll\JazzNRoll\Library\PlayModeViewStates\5c8e8c6fb38829c44acdb91e58ed4182
+  - C:\Projects\JazzNRoll\JazzNRoll\Library\PlayModeViewStates\5493303308c091245902e46d832aca9e
   m_PlayModeViewName: GameView
   m_ShowGizmos: 0
   m_TargetDisplay: 0
@@ -97,8 +97,8 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 1
-    m_VSlider: 1
+    m_HSlider: 0
+    m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
@@ -111,18 +111,18 @@ MonoBehaviour:
       y: 21
       width: 1004
       height: 649
-    m_Scale: {x: 1.4257609, y: 1.4257609}
-    m_Translation: {x: 492.82172, y: 316.17505}
+    m_Scale: {x: 1, y: 1}
+    m_Translation: {x: 502, y: 324.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -345.65524
-      y: -221.75882
-      width: 704.1854
-      height: 455.19556
+      x: -502
+      y: -324.5
+      width: 1004
+      height: 649
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1004, y: 670}
@@ -203,8 +203,12 @@ MonoBehaviour:
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
+      - m_Data: -25196
+      - m_Data: -19586
       - m_Data: -1368
-      - m_Data: 50672
+      - m_Data: 50742
+      - m_Data: 51048
+      - m_Data: 51108
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -255,7 +259,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 112}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 12407
+  controlID: 13712
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -276,8 +280,8 @@ MonoBehaviour:
     y: 0
     width: 1006
     height: 696
-  m_MinSize: {x: 202, y: 226}
-  m_MaxSize: {x: 4002, y: 4026}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 7}
@@ -894,9 +898,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 12.776948, y: -61.149105, z: 121.07992}
+    m_Target: {x: -1.6871731, y: -20.846916, z: 36.87425}
     speed: 2
-    m_Value: {x: 12.776948, y: -61.149105, z: 121.07992}
+    m_Value: {x: -1.6871731, y: -20.846916, z: 36.87425}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -943,13 +947,13 @@ MonoBehaviour:
     m_gridOpacity: 0.482
     m_NearestPlaneToHandleMode: 0
   m_Rotation:
-    m_Target: {x: 0.18715334, y: 0.075677775, z: -0.015149729, w: 0.97929513}
+    m_Target: {x: 0.24479827, y: 0.10502823, z: -0.027393479, w: 0.9634906}
     speed: 2
-    m_Value: {x: 0.18715316, y: 0.0756777, z: -0.015149714, w: 0.9792942}
+    m_Value: {x: 0.24479562, y: 0.10502709, z: -0.02739318, w: 0.9634802}
   m_Size:
-    m_Target: 51.961525
+    m_Target: 0.8660254
     speed: 2
-    m_Value: 51.961525
+    m_Value: 0.8660254
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1134,7 +1138,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Materials/Dices
+    - Assets/Sprites/Combos
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1144,26 +1148,27 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 68
   m_LastFolders:
-  - Assets/Materials/Dices
+  - Assets/Sprites/Combos
   m_LastFoldersGridSize: 68
   m_LastProjectPath: C:\Projects\JazzNRoll\JazzNRoll
   m_LockTracker:
     m_IsLocked: 0
   m_LastLocalAssetsSearchArea: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 201}
+    scrollPos: {x: 0, y: 241}
     m_SelectedIDs:
-    - m_Data: 52568
+    - m_Data: 96310
     m_LastClickedID:
-      m_Data: 52568
+      m_Data: 96310
     m_ExpandedIDs:
     - m_Data: 0
+    - m_Data: 51880
+    - m_Data: 51882
+    - m_Data: 51884
+    - m_Data: 51886
     - m_Data: 51888
     - m_Data: 51890
-    - m_Data: 51892
-    - m_Data: 51894
-    - m_Data: 51896
-    - m_Data: 51898
+    - m_Data: 62100
     - m_Data: 1000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1198,12 +1203,12 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
+    - m_Data: 51880
+    - m_Data: 51882
+    - m_Data: 51884
+    - m_Data: 51886
     - m_Data: 51888
     - m_Data: 51890
-    - m_Data: 51892
-    - m_Data: 51894
-    - m_Data: 51896
-    - m_Data: 51898
     - m_Data: 1000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1232,9 +1237,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: []
+    m_SelectedInstanceIDs:
+    - m_Data: -105494
     m_LastClickedEntityId:
-      m_Data: 0
+      m_Data: -105494
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs:
     - m_Data: 62210
@@ -1377,8 +1383,8 @@ MonoBehaviour:
     y: 0
     width: 639
     height: 981
-  m_MinSize: {x: 276, y: 76}
-  m_MaxSize: {x: 4001, y: 4026}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -1429,7 +1435,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectEntityId:
-    m_Data: 50926
+    m_Data: -20122
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0

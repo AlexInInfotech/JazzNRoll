@@ -13,7 +13,7 @@ public class Hat : BaffByChance
     {
         Debug.Log("Hat Baff " + (PointsManager.totalGainedPoints - lastScore).ToString());
         //PointsManager.AddToScore((int)((PointsManager.totalGainedPoints - lastScore) * (resultKoef - 1)));//как нибудь показать что это очки от баффа
-        BaffVisualization.ShowPointsByBaff(this.name, (int)((PointsManager.totalGainedPoints - lastScore) * (resultKoef - 1)));
+        BaffVisualization.AddPointsByBaff(this.name, (int)((PointsManager.totalGainedPoints - lastScore) * (resultKoef - 1)));
         BaffVisualization.ShowBaffActivity(this.name, false);
     }
 }

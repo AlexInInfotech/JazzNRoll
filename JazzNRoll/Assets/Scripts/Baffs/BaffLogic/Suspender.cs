@@ -23,7 +23,7 @@ public class Suspender : Baff
             {
                 Debug.Log("Suspender");
                 //PointsManager.AddToScore((int)Mathf.Ceil((float)(gainedConditionPoints * additiveProcent / 100)));
-                BaffVisualization.ShowPointsByBaff(this.name, (int)Mathf.Ceil((float)(gainedConditionPoints * additiveProcent / 100)));
+                BaffVisualization.AddPointsByBaff(this.name, (int)Mathf.Ceil((float)(gainedConditionPoints * additiveProcent / 100)));
             }
 
         }
