@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 838b2dd0e0bbdfe429b36665f5c56a68, type: 3}
   m_Name: Weird
   m_EditorClassIdentifier: Assembly-CSharp::DiceItem
-  icon: {fileID: 21300000, guid: 7e087822713793447b347c54a6896a56, type: 3}
-  title: "\u0421\u0442\u0440\u0430\u043D\u043D\u043E\u0441\u0442\u044C"
-  description: "\u041C\u0435\u043D\u044F\u0435\u0442 \u043E\u0434\u0438\u043D \u043A\u0443\u0431\u0438\u043A
-    \u043D\u0430 \u043A\u0443\u0431\u0438\u043A \u0441 \u0433\u0440\u0430\u043D\u044F\u043C\u0438
-    1,1,1,4,4,6"
+  icon: {fileID: 21300000, guid: 410d65f0a150e114da6c8de17dc1c407, type: 3}
+  titles:
+  - "\u0421\u0442\u0440\u0430\u043D\u043D\u044B\u0439 \u043A\u0443\u0431\u0438\u043A"
+  - Weird die
+  descriptions:
+  - "\u041A\u0443\u0431\u0438\u043A \u0441 \u0433\u0440\u0430\u043D\u044F\u043C\u0438
+    1 1 4 4 6 6 "
+  - A die with faces 1, 1, 4, 4, 6, 6
   rarity: 0
   dice: {fileID: 11400000, guid: 0d3f73d5b0079744ca0d17c649b4e31a, type: 2}

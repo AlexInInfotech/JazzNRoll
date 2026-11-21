@@ -14,10 +14,8 @@ public class ViolinCase : Baff
     }
     public override void ModifyGame()
     {
-        Debug.Log("ViolinCas  " + Activate);
         if (Activate && PointsManager.totalGainedPoints - lastScore!= 0)//модификации активируются перед броском и после, а эффект должен продержаться один бросок
         {
-            Debug.Log("ViolinCase DEBaff");
             Activate = false;
             PointsManager.AddToComboModifiers(-additiveKoeff);
             BaffVisualization.ShowBaffActivity(this.name, false);
@@ -25,7 +23,6 @@ public class ViolinCase : Baff
         BaffVisualization.ShowBaffScore(this.name, PointsManager.totalGainedPoints - lastScore);
         if (PointsManager.totalGainedPoints - lastScore < deltaScore)
             return;
-        Debug.Log("ViolinCase Baff");
         PointsManager.AddToComboModifiers(additiveKoeff);
         BaffVisualization.ShowBaffActivity(this.name, true);
         lastScore = PointsManager.totalGainedPoints;

@@ -5,8 +5,6 @@ public class BlackLiquid : BaffByChance
 {
     protected override void Activated()
     {
-        Debug.Log("BlackLiquid");
-        //PointsManager.AddToScore(-PointsManager.GetScore());
         BaffVisualization.AddPointsByBaff(this.name, -PointsManager.GetScore());
 
     }

@@ -8,8 +8,6 @@ public class BowTie : BaffByChance
 
     protected override void Activated()
     {
-        Debug.Log("BowTie activated");//как нибудь показать что бафф активировался
-        //PointsManager.AddToScore(additivePoints);
         BaffVisualization.AddPointsByBaff(this.name, additivePoints);
 
     }

@@ -14,9 +14,7 @@ public class Poker : Baff
         BaffVisualization.ShowBaffScore(this.name, PointsManager.totalGainedPoints - lastScore);
         if (PointsManager.totalGainedPoints - lastScore < deltaScore)
             return;
-        Debug.Log("Poker");
         lastScore = PointsManager.totalGainedPoints;
-        //PointsManager.AddToScore(additivePoints);
         BaffVisualization.AddPointsByBaff(this.name, additivePoints);
     }
 }

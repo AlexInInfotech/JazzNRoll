@@ -21,12 +21,10 @@ public class Aces : Baff
         {
             gainedConditionPoints += PointsManager.totalGainedPoints - lastScore;
             BaffVisualization.ShowBaffScore(this.name, gainedConditionPoints);
-            Debug.Log("IS NUMS IN dropped");
 
         }
         if (gainedConditionPoints >= deltaScore)
         {
-            Debug.Log("Aces");
             //DiceManager.AddRolls(extraRolls);
             BaffVisualization.AddRollsByBaff(this.name, extraRolls);
             gainedConditionPoints = 0;

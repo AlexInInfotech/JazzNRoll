@@ -7,7 +7,6 @@ public class Mirror : Baff
     [SerializeField] float deductedKoef;
     public override void Start()
     {
-        Debug.Log("Mirror");
         PointsManager.AddToComboModifiers(-deductedKoef, combos);
     }
 }

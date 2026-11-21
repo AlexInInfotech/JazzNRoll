@@ -17,8 +17,6 @@ public class BaffVisualization : MonoBehaviour
     static RectTransform rolls;
     static BaffIcon[] baffIcons;
     static byte activeBaffCount = 0;
-    static Transform iconsContainer;
-    const float duration = 1.5f;
     const string POINTSTEXT = "PointsByBaff";
     const string SCORETEXT = "Score";
     const string ACTIVATION = "ActivationEmission";
@@ -26,7 +24,7 @@ public class BaffVisualization : MonoBehaviour
     {
         score = _score;
         rolls = _rolls;
-        iconsContainer = this.transform;
+        //iconsContainer = this.transform;
         baffIcons = new BaffIcon[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -66,13 +64,11 @@ public class BaffVisualization : MonoBehaviour
     }
     public static void ShowBaffScore(string baffName, int value)
     {
-        Debug.Log("VISUALIZINDGGG");
         GetTransformOfBaff(baffName, SCORETEXT).GetComponent<TextMeshProUGUI>().text = value.ToString();
         //scoreText.gameObject.SetActive(true);
     }
     public static void AddPointsByBaff(string baffName, int value)//если слишком быстро кидть то может потеряться значение
     {
-        byte i = 0;
         Transform pointsText = GetTransformOfBaff(baffName, POINTSTEXT);
         if (pointsText == null)
             return;
@@ -108,33 +104,33 @@ public class BaffVisualization : MonoBehaviour
     //    transform.position = parent.position + offset;
     //    transform.gameObject.SetActive(false);
     //}
-    static IEnumerator PointsAnimation(Transform parent, Transform transform, int value, Vector3 offset)
-    {
-        yield return new WaitForSeconds(1f);
-        Vector3 startWorldPos = transform.position;
+    //static IEnumerator PointsAnimation(Transform parent, Transform transform, int value, Vector3 offset)
+    //{
+    //    yield return new WaitForSeconds(1f);
+    //    Vector3 startWorldPos = transform.position;
 
-        float elapsedTime = 0f;
+    //    float elapsedTime = 0f;
 
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            float percentageComplete = elapsedTime / duration;
-            float smoothPercentage = Mathf.SmoothStep(0f, 1f, percentageComplete);
-            transform.position = Vector3.Lerp(startWorldPos, score.position, smoothPercentage);
+    //    while (elapsedTime < duration)
+    //    {
+    //        elapsedTime += Time.deltaTime;
+    //        float percentageComplete = elapsedTime / duration;
+    //        float smoothPercentage = Mathf.SmoothStep(0f, 1f, percentageComplete);
+    //        transform.position = Vector3.Lerp(startWorldPos, score.position, smoothPercentage);
 
-            yield return null;
-        }
-        PointsManager.AddToScore(value);
-        transform.SetParent(parent);
-        transform.position = parent.position + offset;
-        transform.gameObject.SetActive(false);
-    }
+    //        yield return null;
+    //    }
+    //    PointsManager.AddToScore(value);
+    //    transform.SetParent(parent);
+    //    transform.position = parent.position + offset;
+    //    transform.gameObject.SetActive(false);
+    //}
     public static void AddBaffToList(BaffItem baffItem)
     {
         baffIcons[activeBaffCount].baffName = baffItem.baff.name;
         baffIcons[activeBaffCount].gameObject.GetComponent<Image>().sprite = baffItem.icon;
         baffIcons[activeBaffCount].gameObject.SetActive(true);
-        baffIcons[activeBaffCount].gameObject.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = baffItem.description;
+        baffIcons[activeBaffCount].gameObject.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = baffItem.descriptions[(int)LanguageManager.language];
         activeBaffCount++;
         //baffIcons[activeBaffCount]
     }

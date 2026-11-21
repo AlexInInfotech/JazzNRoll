@@ -7,7 +7,6 @@ public class WhitePowder : Baff
     [SerializeField] float additiveKoef;
     public override void Start()
     {
-        Debug.Log("WhitePowder");
         PointsManager.AddToComboModifiers(additiveKoef, combos);
     }
 }

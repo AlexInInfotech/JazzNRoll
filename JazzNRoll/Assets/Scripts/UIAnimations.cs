@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using static DiceManager;
@@ -33,6 +34,24 @@ public class UIAnimations
         }
         textTransform.position = startWorldPos;
         textTransform.gameObject.SetActive(false);
+        callback?.Invoke();
+    }
+    public static void TextChanging(TextMeshProUGUI textMesh, string[] texts, float delay, Action callback)
+    {
+        staticScript.StartCoroutine(TextCouroutine(textMesh, texts, delay, callback));
+    }
+    private static IEnumerator TextCouroutine(TextMeshProUGUI textMesh, string[] texts, float delay, Action callback)
+    {
+        for (int i = 0; i < texts.Length; i++)
+        {   
+            if (i < texts.Length )
+            {
+                yield return new WaitForSeconds(delay);
+            }
+            textMesh.text = texts[i];
+
+            
+        }
         callback?.Invoke();
     }
     //public static IEnumerator DrawTextToPoint( Transform textTransform, int value, Vector3 offset)

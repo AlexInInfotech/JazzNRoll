@@ -15,9 +15,14 @@ public class BaffManager : MonoBehaviour
     static GameObject[] cards;
     static Sprite[] cardBackground;
     static List<Baff> baffs = new List<Baff>();
-    static int rareChance = 20;
-    static int legendaryChance = 10;
-    static int debaffChanceByPoint = 20;
+    static int rareChance = 2;
+    static int legendaryChance = 1;
+    static byte legendaryAddChance = 15;
+    static byte notLegendaryCount = 0;
+    static byte rareAddChance = 20;
+    static byte notRareCount = 0;
+    static int debaffChanceByPoint = 25;
+    static byte frequency = 3;
     static byte cardsCount;
     public static int pityPoints { get; private set; } = 0;
     public const int maxPity = 5;
@@ -68,6 +73,7 @@ public class BaffManager : MonoBehaviour
     {
         pityPoints += value;
         UIManager.ShowPity();
+        UIManager.ShowDebaffChance(-debaffChanceByPoint * pityPoints);
     }
     public static void AddToLegendaryChance(int value)
     {
@@ -86,22 +92,22 @@ public class BaffManager : MonoBehaviour
         switch (baffCard.item.rarity)
         {
             case Rarity.usual:
-                MoveToUsed(usualItems, baffCard.item, usualUsedCount);
+                MoveToUsed(usualItems, baffCard.item, ref usualUsedCount);
                 usualUsedCount += 1;
                 //PrintAvailableCard(usualItems, usualDropped);
                 break;
             case Rarity.rare:
-                MoveToUsed(rareItems, baffCard.item, rareUsedCount);
+                MoveToUsed(rareItems, baffCard.item,ref rareUsedCount);
                 rareUsedCount += 1;
                 //PrintAvailableCard(rareItems, rareDropped);
                 break;
             case Rarity.legendary:
-                MoveToUsed(legendaryItems, baffCard.item, legendaryUsedCount);
+                MoveToUsed(legendaryItems, baffCard.item,ref legendaryUsedCount);
                 legendaryUsedCount += 1;
                 //PrintAvailableCard(legendaryItems, legendaryDropped);
                 break;
             case Rarity.debaff:
-                MoveToUsed(debaffs, baffCard.item, debaffUsedCount);
+                MoveToUsed(debaffs, baffCard.item, ref debaffUsedCount);
                 debaffUsedCount += 1;
                 //PrintAvailableCard(legendaryItems, legendaryDropped);
                 break;
@@ -119,8 +125,13 @@ public class BaffManager : MonoBehaviour
     //        str = str+ " " + cards[i].name;
     //    Debug.Log(str);
     //}
-    private static void MoveToUsed(Item[] items, Item item, int index)
+    private static void MoveToUsed(Item[] items, Item item, ref byte index)
     {
+        if(index > items.Length)
+        {
+            index = 0;
+            ShuffleCards(items);
+        }
         int itemIndex = Array.IndexOf(items, item);
         Item temp = items[index];
         items[index] = item;
@@ -133,7 +144,6 @@ public class BaffManager : MonoBehaviour
             randomItems = GetRandomBaffs();
         else
         {
-            Debug.Log(-debaffChanceByPoint * pityPoints);
             if (UnityEngine.Random.Range(1, 100) < -debaffChanceByPoint * pityPoints)
                 randomItems = GetRandomDebaffs();
             else
@@ -160,20 +170,25 @@ public class BaffManager : MonoBehaviour
         for (int i = 0; i < cardsCount; i++)
         {
             randomNum = UnityEngine.Random.Range(1, 100);
-            if (randomNum >= 100 - legendaryChance)
+            if (randomNum >= 100 - legendaryChance - legendaryAddChance*(byte)(notLegendaryCount/frequency))
             {
                 randomItems[i] = GetRandomCard(legendaryItems, legendaryUsedCount, legendaryCount);
-                legendaryCount++;
+                legendaryCount++; 
+                notLegendaryCount = 0;
+                notRareCount++;
             }
-            else if (randomNum <= rareChance)
+            else if (randomNum <= rareChance + rareAddChance * (byte)(notRareCount / frequency))
             {
                 randomItems[i] = GetRandomCard(rareItems, rareUsedCount, rareCount);
-                rareCount++;
+                rareCount++; notRareCount = 0;
+                notLegendaryCount++;
             }
             else
             {
                 randomItems[i] = GetRandomCard(usualItems, usualUsedCount, usualCount);
                 usualCount++;
+                notLegendaryCount++;
+                notRareCount++;
             }
 
         }
@@ -189,9 +204,9 @@ public class BaffManager : MonoBehaviour
         for (int i = 0; i < card.transform.childCount; i++)
         {
             if (card.transform.GetChild(i).name == TITLE)
-                card.transform.GetChild(i).GetComponent<TextMeshProUGUI>().text = item.title;
+                card.transform.GetChild(i).GetComponent<TextMeshProUGUI>().text = item.titles[(int)LanguageManager.language];
             if (card.transform.GetChild(i).name == DESCRIPTION)
-                card.transform.GetChild(i).GetComponent<TextMeshProUGUI>().text = item.description;
+                card.transform.GetChild(i).GetComponent<TextMeshProUGUI>().text = item.descriptions[(int)LanguageManager.language];
             if (card.transform.GetChild(i).TryGetComponent<Image>(out Image image))
                 image.sprite = item.icon;
         }

@@ -18,7 +18,6 @@ public class Pearls : Baff
             return;
         if(gainedConditionPoints != 0)
             BaffVisualization.AddPointsByBaff(this.name, (int)(gainedConditionPoints * koef));
-        //PointsManager.AddToScore((int)(gainedConditionPoints* koef));
         if (IsComboDropped())
         { 
             gainedConditionPoints += PointsManager.totalGainedPoints - lastScore;

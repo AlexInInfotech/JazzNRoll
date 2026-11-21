@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using System;
 
 public class DutyManager : MonoBehaviour
 {
@@ -7,7 +8,8 @@ public class DutyManager : MonoBehaviour
     static int[] duties;
     static TextMeshProUGUI dutyUI;
     static byte dutyIndex = 0;
-    const string DUTY = "Долг: ";
+    static string dutyText = "Долг: ";
+    static string[] dutyTexts = { "Долг: ", "Duty: " };
 
     public static int GetCurrentDuty()
     {
@@ -15,7 +17,7 @@ public class DutyManager : MonoBehaviour
     }
     private void ShowCurrentDuty()
     { 
-        dutyUI.text = DUTY + duties[dutyIndex];
+        dutyUI.text = dutyText + duties[dutyIndex];
     }
     public void PayDuty()
     {
@@ -40,10 +42,16 @@ public class DutyManager : MonoBehaviour
     }
     void Start()
     {
+        LanguageManager.languageChanged += OnLanguageChanged;
         duties = _duties;
         dutyUI = GetComponent<TextMeshProUGUI>();
-        ShowCurrentDuty();
+        OnLanguageChanged();
     }
+    private void OnLanguageChanged()
+    {
+        dutyText = dutyTexts[(int)LanguageManager.language];
+        ShowCurrentDuty();
 
+    }
    
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Tutorial : MonoBehaviour
 {
     public static bool isActive = true;
-    [SerializeField] string[] tutorialTexts;
     TutorialStep[] tutorialSteps;
     byte currentStep = 0;
 
@@ -34,7 +33,6 @@ public class Tutorial : MonoBehaviour
     }
     private void UpdateTutorial()
     {
-        Debug.Log("Next step");
         if (currentStep > 0)
             tutorialSteps[currentStep - 1].DeactivateStep();
         tutorialSteps[currentStep].ActivateStep();

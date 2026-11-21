@@ -21,8 +21,6 @@ public class Suspender : Baff
             BaffVisualization.ShowBaffScore(this.name, gainedConditionPoints);
             if (gainedConditionPoints %2 == 0)
             {
-                Debug.Log("Suspender");
-                //PointsManager.AddToScore((int)Mathf.Ceil((float)(gainedConditionPoints * additiveProcent / 100)));
                 BaffVisualization.AddPointsByBaff(this.name, (int)Mathf.Ceil((float)(gainedConditionPoints * additiveProcent / 100)));
             }
 

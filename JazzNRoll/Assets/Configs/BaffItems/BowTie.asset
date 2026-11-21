@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: BowTie
   m_EditorClassIdentifier: Assembly-CSharp::BaffItem
   icon: {fileID: 21300000, guid: 5ff064efcfe46b140ae6d326bd8261e4, type: 3}
-  title: "\u0411\u0430\u0431\u043E\u0447\u043A\u0430"
-  description: "7.6% \u0448\u0430\u043D\u0441\u0430 \u0447\u0442\u043E \u0434\u0430\u0441\u0442
-    267 \u043E\u0447\u043A\u043E\u0432"
+  titles:
+  - "\u0411\u0430\u0431\u043E\u0447\u043A\u0430"
+  - BowTie
+  descriptions:
+  - "\u0421 \u0448\u0430\u043D\u0441\u043E\u043C 6% \u0434\u0430\u0435\u0442 276
+    \u043E\u0447\u043A\u043E\u0432 \u043D\u0430 \u0441\u0447\u0435\u0442"
+  - Has a 6% chance to add 276 points to the score
   rarity: 0
   baff: {fileID: 11400000, guid: 734c74ecf026aa4499a1c9a3815421b8, type: 2}

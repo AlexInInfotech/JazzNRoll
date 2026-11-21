@@ -6,7 +6,6 @@ public class Nail : BaffByChance
     [SerializeField] float deductedKoef;
     protected override void Activated()
     {
-        Debug.Log("Nail activated");
         PointsManager.AddToComboModifiers(-deductedKoef);
     }
 }

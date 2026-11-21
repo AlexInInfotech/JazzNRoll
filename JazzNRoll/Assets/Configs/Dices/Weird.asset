@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9150f7e1ca145444b003df8e0f0a0e1, type: 3}
   m_Name: Weird
   m_EditorClassIdentifier: Assembly-CSharp::DiceInfo
-  valueOnFaces: 060101040401
-  material: {fileID: 2100000, guid: 5580addce4fd2bc45843faebfda0d5a3, type: 2}
+  valueOnFaces: 040606010401
+  material: {fileID: 2100000, guid: c56f43f02ed99254eb00312ad448aaca, type: 2}

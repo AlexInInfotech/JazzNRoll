@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9150f7e1ca145444b003df8e0f0a0e1, type: 3}
   m_Name: Luck
   m_EditorClassIdentifier: Assembly-CSharp::DiceInfo
-  valueOnFaces: 060604060502
-  material: {fileID: 2100000, guid: a6a9da162fe057f4aaaf7b4b7642f2e6, type: 2}
+  valueOnFaces: 060606020504
+  material: {fileID: 2100000, guid: 414256a42c3493c428331548748ca893, type: 2}
